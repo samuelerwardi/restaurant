@@ -307,7 +307,7 @@
          aria-labelledby="gridSystemModalLabel"></div>
     </body>
 </html>
-
+@include('layouts.partials.modal')
 <script type="text/javascript">
   var base_url = '<?php echo asset("") ?>'
 </script>

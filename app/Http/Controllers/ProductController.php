@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductsStoreRequest;
+use App\Repositories\Article\MasterProdukRepository;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct(MasterProdukRepository $masterProdukRepository) {
+        $this->repo = $masterProdukRepository;
+        $this->data = null;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return view('product.index');
+        $this->data['datas'] = $this->repo->all();
+        return view('product.create', $this->data);
     }
 
     /**
@@ -34,9 +42,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductsStoreRequest $request)
     {
         //
+        dump($request->all());
+
     }
 
     /**

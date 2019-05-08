@@ -15,6 +15,10 @@ class CreateMasterProduksTable extends Migration
     {
         Schema::create('master_produks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('master_produk_resep_id');
+            $table->string('produk_kode');
+            $table->string('produk_nama');
+            $table->decimal('harga_jual',11,2);
             $table->timestamps();
         });
     }

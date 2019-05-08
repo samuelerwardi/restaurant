@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Article\MasterProdukRepository;
 use Illuminate\Http\Request;
 
 class TransaksiPembelianController extends Controller
 {
+    public function __construct(MasterProdukRepository $masterProdukRepository) {
+        $this->repo = $masterProdukRepository;
+        $this->data = null;
+    }
     /**
      * Display a listing of the resource.
      *

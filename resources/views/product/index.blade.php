@@ -9,7 +9,9 @@
 <section class="content">
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Form Pemesanan Barang</h3>
+            <h3 class="box-title">
+                Form Pemesanan Barang
+            </h3>
         </div><!-- /.box-header -->
         <!-- form start -->
         <div class="row">

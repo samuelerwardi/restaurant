@@ -19,7 +19,9 @@
     <?php  } ?>
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Form Master Barang</h3>
+            <h3 class="box-title">
+                Form Master Barang
+            </h3>
             <div class="block-content collapse in">
                 <div class="span12">
                     <div class="table-toolbar">
@@ -41,7 +43,7 @@
             </div>
         </div><!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal" id="form" action="<?php echo asset('sam') ?>master_barang/insertProduct"
+        <form class="form-horizontal" id="form" action="{{ action("ProductController@store") }}"
               method="post">
             <div class="box-body">
                 <div class="form-group">
@@ -94,16 +96,6 @@
                 </div>
             </div>
         </form>
-        <!--         <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Remember me
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div><! -->
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table With Full Features</h3>
@@ -121,14 +113,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php if (isset($all_product)): ?>
-                    <?php foreach ($all_product as $value) { ?>
+                    <?php if (isset($datas)): ?>
+                    <?php foreach ($datas as $value) { ?>
                     <tr>
-                        <td><?php echo $value['kode_barang'] ?></td>
-                        <td><?php echo $value['nama_barang'] ?></td>
-                        <td><?php echo $value['deskripsi'] ?></td>
-                        <td><?php echo $value['presentase'] ?></td>
-                        <td><?php echo $value['created_timestamp'] ?></td>
+                        <td><?php echo $value['produk_kode'] ?></td>
+                        <td><?php echo $value['produk_nama'] ?></td>
+                        <td><?php echo $value['created_at'] ?></td>
                         <td width="16%">
                             <a href="#" class="btn btn-default fa fa-edit btn-default btn_edit"
                                data-kode="<?php echo $value['kode_barang'] ?>"
