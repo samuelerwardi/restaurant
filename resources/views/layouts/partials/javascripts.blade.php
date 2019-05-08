@@ -108,5 +108,5 @@
 <script src="{{ asset('js/app.js?v=' . $asset_v) }}"></script>
 <script src="{{ asset('js/help-tour.js?v=' . $asset_v) }}"></script>
 <script src="{{ asset('plugins/calculator/calculator.js?v=' . $asset_v) }}"></script>
-
+<script src="{{ asset('js/general.js') }}"></script>
 @yield('javascript')

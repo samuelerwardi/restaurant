@@ -9,7 +9,7 @@
 <section class="content">
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Form Pemesanan Barang</h3>
+            <h3 class="box-title">No Penjualan</h3>
         </div><!-- /.box-header -->
         <!-- form start -->
         <div class="row">
@@ -24,16 +24,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-6" for="tanggalpenjualan">Tanggal Created PO</label>
+                            <label class="col-md-6" for="tanggalpenjualan">Tanggal Penjualan</label>
                             <div class="col-md-6">
                                 <input type="text" name="tanggalpenjualan" id="tanggalpenjualan" class="form-control datepicker" disabled="" value="2019/04/29">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-6" for="tanggalpenjualan">Supplier</label>
-                            <div class="col-md-6">
-                                <input type="hidden" name="kodesupplier" id="kodesupplier">
-                                <input type="text" name="namasupplier" id="namasupplier" class="form-control  ui-autocomplete-input" required="" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -139,7 +132,7 @@
 
 @section('javascript')
     <script src="{{ asset('js/currency.js') }}"></script>
-    <script src="{{ asset('js/trx_beli.js') }}"></script>
+    <script src="{{ asset('js/trx.js') }}"></script>
     <script type="text/javascript">
       $(function(){
         $("#combocustomer").change(function(){
