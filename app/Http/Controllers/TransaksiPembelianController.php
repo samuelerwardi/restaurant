@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Article\MasterProdukRepository;
+// use App\Repositories\Article\MasterProdukRepository;
+use App\Repositories\RepositoryInterface;
+use App\Repositories\TransaksiPembelian\TransaksiPembelianRepository;
 use Illuminate\Http\Request;
+use League\Fractal\Manager;
 
 class TransaksiPembelianController extends Controller
 {
-    public function __construct(MasterProdukRepository $masterProdukRepository) {
-        $this->repo = $masterProdukRepository;
-        $this->data = null;
+    // public function __construct(MasterProdukRepository $masterProdukRepository) {
+    //     $this->repo = $masterProdukRepository;
+    //     $this->data = null;
+    // }
+    public function __construct(TransaksiPembelianRepository $repo, Manager $fractal, Request $request)
+    {
+        parent::__construct($repo, $fractal, $request);
     }
+
     /**
      * Display a listing of the resource.
      *

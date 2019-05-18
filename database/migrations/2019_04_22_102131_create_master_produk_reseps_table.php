@@ -15,6 +15,9 @@ class CreateMasterProdukResepsTable extends Migration
     {
         Schema::create('master_produk_reseps', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('master_produk_id');
+            $table->integer('master_bahan_id');
+            $table->decimal('qty',11,2);
             $table->timestamps();
         });
     }

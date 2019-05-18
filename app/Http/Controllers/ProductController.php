@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductsStoreRequest;
-use App\Repositories\Article\MasterProdukRepository;
+use App\MasterProduk;
+use App\Repositories\MasterProduk\MasterProdukRepository;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,7 +23,7 @@ class ProductController extends Controller
     {
         //
         $this->data['datas'] = $this->repo->all();
-        return view('product.create', $this->data);
+        return view('product.index', $this->data);
     }
 
     /**
@@ -45,8 +46,8 @@ class ProductController extends Controller
     public function store(ProductsStoreRequest $request)
     {
         //
-        dump($request->all());
-
+        $product = $this->repo->create($request->all());
+        return redirect()->back()->with("message", "Success Saved");
     }
 
     /**
@@ -63,12 +64,14 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\MasterProduk  $masterProduk
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(MasterProduk $masterProduk)
     {
         //
+        dump($masterProduk->getAttribute("id"));
+        die;
     }
 
     /**

@@ -6,154 +6,132 @@
 @endsection
 
 @section('content')
-<section class="content">
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">
-                Form Pemesanan Barang
-            </h3>
-        </div><!-- /.box-header -->
-        <!-- form start -->
-        <div class="row">
-            <form class="form-horizontal" method="post" action="transaksi_pembelian/insertTransaction" id="form" target="iframecetakpo">
-                <input type="hidden" value="" name="trxid">
-                <div class="col-md-12" style="margin-bottom:50px">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-md-6" for="tanggalpenjualan">No PO</label>
-                            <div class="col-md-6">
-                                <input type="text" name="nopenjualan" id="tanggalpenjuaalan" class="form-control " disabled="" value="AUTO GENERATED">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-6" for="tanggalpenjualan">Tanggal Created PO</label>
-                            <div class="col-md-6">
-                                <input type="text" name="tanggalpenjualan" id="tanggalpenjualan" class="form-control datepicker" disabled="" value="2019/04/29">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-6" for="tanggalpenjualan">Supplier</label>
-                            <div class="col-md-6">
-                                <input type="hidden" name="kodesupplier" id="kodesupplier">
-                                <input type="text" name="namasupplier" id="namasupplier" class="form-control  ui-autocomplete-input" required="" autocomplete="off">
-                            </div>
-                        </div>
-                    </div>
+    <section class="content">
+        <div class="box box-info">
+            <div class="box">
+                <!-- box-header -->
+                <div class="box-header">
                 </div>
-                <hr>
-                <div class="col-md-12">
-                    <div class="col-md-2">
-                        <label for="kodebarang">Kode Barang</label>
-                        <input type="text" id="kodebarang" class="form-control ui-autocomplete-input" autocomplete="off">
-                    </div>
-                    <div class="col-md-2">
-                        <label for="namabarang">Nama Barang</label>
-                        <span id="namabarang" class="form-control uneditable-input"></span>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="harga">Harga</label>
-                        <span id="harga" class="form-control uneditable-input"></span>
-                        <input type="hidden" id="category" class="form-control" autocomplete="off">
-                        <!-- <input type="text" id="harga" class="form-control" autocomplete="off"> -->
-                    </div>
-
-                    <div class="col-md-2">
-                        <label for="qty">Qty</label>
-                        <input type="text" id="qty" name="qty" class="form-control" autocomplete="off">
-                        <div class="error-container">
-                            <span id="response" class="error"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="subtotal">Subtotal</label>
-                        <span id="subtotal" class="form-control uneditable-input">0</span>
-                    </div>
-                    <div class="col-md-2">
-                        <label>&nbsp;</label>
-                        <a href="#" class="btn btn-success form-control" id="tambah"><i class="icon-plus icon-white"></i>Tambah</a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <table class="table table-striped table-bordered padd-bottom" id="detail">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped datatable datatable-client">
                         <thead>
                         <tr>
-                            <th class="col-md-2">Kode Barang</th>
-                            <th class="col-md-2">Nama Barang</th>
-                            <th class="col-md-2">Harga</th>
-                            <th class="col-md-2">Qty</th>
-                            <th class="col-md-2">Subtotal</th>
-                            <th class="col-md-2"></th>
+                            <th>Id</th>
+                            <th>Kode Bahan</th>
+                            <th>Nama Bahan</th>
+                            <th>Produk Resep</th>
+                            <th>Satuan</th>
+                            <th>Created</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="empty-detail">
-                            <td colspan="6">Detail masih kosong</td>
-                        </tr>
-                        <!--                                                  <tr class="empty-detail">
-                                                </tr> -->
-                        </tbody>
-                        <tfoot>
+                        <?php if (isset($datas)): ?>
+                        <?php foreach ($datas as $value) { ?>
                         <tr>
-                            <th colspan="4">
-                                <div class="text-right">
-                                    Grandtotal
-                                </div>
-                            </th>
-                            <td colspan="2" id="grandtotal">
-                                <input type="hidden" name="grandtotal" value="0">
-                                0                        </td>
-                        </tr>
-                        <tr>
-                            <th colspan="4">
-                                <div class="text-right">
-                                    PPN
-                                </div>
-                            </th>
-                            <td colspan="2">
-                                <input type="text" required="" min="0" name="pph" id="pph" class="form-control" autocomplete="off" value="">
+                            <td>{{ $value["id"]  }}</td>
+                            <td><?php echo $value['produk_kode'] ?></td>
+                            <td><?php echo $value['produk_nama'] ?></td>
+                            <td>
+                                <?php
+//                                    dump($value->getMasterProdukReseps());
+//                                    die;
+                                if(!empty($value->getMasterProdukReseps())){
+                                    foreach ($value->getMasterProdukReseps() as $keyBahan => $valueBahan){ ?>
+                                        <?php if (!empty($valueBahan->getMasterBahan()[0])): ?>
+                                            <?php echo $valueBahan->getMasterBahan()[0]["nama_bahan"] ?>
+                                        <?php endif ?>
+                                    <?php }
+                                }
+                                else{?>
+                                <?php }
+                                ?>
+                            </td>
+                            <td><?php echo $value['satuan'] ?></td>
+                            <td><?php echo $value['created_at'] ?></td>
+                            <td width="16%">
+                                <a href="{{action('ProductController@edit',['id' => $value['id']])}}" class="btn btn-default fa fa-edit btn-default btn_edit">
+                                    <i class="icon-pencil icon-white"></i> Edit
+                                </a>
+
+
+                                <form action="{{action('ProductController@destroy',$value['id'])}}" method="POST" style="display : inline-table">
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-default fa fa-trash btn-default">
+                                        <i class="icon-pencil icon-white"></i>
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
-                        <tr>
-                            <th colspan="4">
-                                <div class="text-right">
-                                    Harga setelah PPN
-                                </div>
-                            </th>
-                            <td colspan="2" id="afterpph">0</td>
-                        </tr>
+                        <?php  } ?>
+                        <?php endif ?>
+                        </tbody>
+                        <tfoot>
                         </tfoot>
                     </table>
-                </div>
-
-
-                <hr>
-                <div class="col-md-12">
-                    <div class="block-content text-right" style="padding:20px">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="reset" class="btn">Cancel</button>
-                    </div>
-                </div>
-            </form>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
         </div>
-    </div>
-</section>
-@endsection
-
+    </section>
+@stop
 @section('javascript')
-    <script src="{{ asset('js/currency.js') }}"></script>
-    <script src="{{ asset('js/trx_beli.js') }}"></script>
+    <script src="{{ asset('js/currency_master_barang.js') }}"></script>
+    <script src="{{ asset('js/form_validation_barang.js') }}"></script>
+    <script src="{{ asset('js/scripts_master_barang.js') }}"></script>
     <script type="text/javascript">
-      $(function(){
-        $("#combocustomer").change(function(){
-          if ($(this).val()=="") {
-            $("#newcustomer").fadeIn();
-            $("#methodpayment").fadeOut();
-          } 
-          else{
-            $("#newcustomer").fadeOut();
-            $("#methodpayment").fadeIn();
-          };
+        $(document).ready(function(){
+            //   var table = $('#datatable-serverside').DataTable({
+            //     processing: true,
+            //     serverSide: true,
+            //     columnDefs: [ {
+            //        "searchable": false,
+            //        "orderable": false,
+            //        "targets": 0
+            //     }],
+            //     order: [[ 1, 'asc' ]],
+            //     ajax : "",
+            //        aoColumns: [
+            //            { mData: null },
+            //            { mData: 'nama_bahan' },
+            //            { mData: 'created_at' },
+            //            { mData: 'id' },
+            //            { mData: 'jumlah' },
+            //            { mData: 'jumlah' },
+            //        ],
+            //   });
+            //     table.on( 'order.dt search.dt', function () {
+            //         table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            //             cell.innerHTML = i+1;
+            //         } );
+            //     }).draw();
+            // var checkbox = "";
+            // $('#datatable-serverside').dataTable({
+            //       "aaSorting": [[0, "asc"]],
+            //       "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100]],
+            //       "iDisplayLength": 50,
+            //       'bProcessing': true,
+            //       'bServerSide': true,
+            //       'sAjaxSource': '',
+            //       'fnServerData': function (sSource, aoData, fnCallback) {
+            //           console.log(aoData.data);
+            //           $.ajax({'dataType': 'json', 'type': 'GET', 'url': sSource, 'data': aoData, 'success': fnCallback});
+            //       },
+            //   // });
+            //       'fnRowCallback': function (nRow, aData, iDisplayIndex) {
+            //           nRow.id = aData[0];
+            //           nRow.className = "customer_details_link";
+            //           return nRow;
+            //       },
+            //       "aoColumns": [null, null, null, null, null, null]
+            //       });
+            function decimalFormat(x) {
+                return 0;
+            }
+            function currencyFormat(x) {
+                return "Rp. " + 0;
+            }
         });
-      });
     </script>
 @endsection

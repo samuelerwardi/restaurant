@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\RepositoryInterface;
+use App\Repositories\TransaksiPenjualan\TransaksiPenjualanRepository;
 use Illuminate\Http\Request;
+use League\Fractal\Manager;
 
 class TransaksiPenjualanController extends Controller
 {
+
+    public function __construct(TransaksiPenjualanRepository $repo, Manager $fractal, Request $request)
+    {
+        parent::__construct($repo, $fractal, $request);
+    }
+
     /**
      * Display a listing of the resource.
      *

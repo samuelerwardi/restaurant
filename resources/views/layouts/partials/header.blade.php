@@ -64,7 +64,7 @@
                         <!-- The user image in the navbar-->
                         <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span>{{ Auth::User()->first_name }} {{ Auth::User()->last_name }}</span>
+                        <span>Hallo Username</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -74,7 +74,7 @@
                                      alt="Logo"></span>
                             @endif
                             <p>
-                                {{ Auth::User()->first_name }} {{ Auth::User()->last_name }}
+                               Hallo Username
                             </p>
                         </li>
                         <!-- Menu Body -->

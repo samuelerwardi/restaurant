@@ -26,7 +26,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::post('/products', 'ProductController@store');
 //Route::get('/products', 'ProductController@index');
 
-Route::resource('products', 'ProductController');
+
+Route::get('master_bahan/list','MasterBahanController@list');
+Route::resource('master_bahan', 'MasterBahanController');
+
+
+Route::resource('product', 'ProductController');
+Route::resource('master_produk', 'MasterProdukController');
+
 
 Route::resource('transaksi_pembelian', 'TransaksiPembelianController');
 

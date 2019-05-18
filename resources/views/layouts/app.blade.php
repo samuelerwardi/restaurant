@@ -90,13 +90,23 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li class="">
-                                    <a href="http://dev.ultimate-pos.localhost/products">
-                                        <i class="fa fa-list"></i>List Products
+                                    <a href="{{action('ProductController@index')}}">
+                                        <i class="fa fa-list"></i>List Product
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="{{action('ProductController@create')}}">
                                         <i class="fa fa-plus-circle"></i>Add Product
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{action('MasterBahanController@index')}}">
+                                        <i class="fa fa-list"></i>List Master Bahan
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{action('MasterBahanController@create')}}">
+                                        <i class="fa fa-plus-circle"></i>Add Master Bahan
                                     </a>
                                 </li>
                                 <li class="">

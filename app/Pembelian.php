@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Pembelian extends Model
 {
     //
+    public $timestamps = false;
     use SoftDeletes;
 }

@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\MasterProduk;
+use App\Repositories\MasterProduk\MasterProdukRepository;
+use App\Repositories\RepositoryInterface;
 use Illuminate\Http\Request;
+use League\Fractal\Manager;
 
 class MasterProdukController extends Controller
 {
+    public function __construct(MasterProdukRepository $repo, Manager $fractal, Request $request)
+    {
+        parent::__construct($repo, $fractal, $request);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +65,10 @@ class MasterProdukController extends Controller
      */
     public function edit(MasterProduk $masterProduk)
     {
+        echo "aaa";
         //
+        dump($masterProduk->getAttribute("id"));
+        die;
     }
 
     /**
