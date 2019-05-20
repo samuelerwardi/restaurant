@@ -5,6 +5,7 @@ namespace App\Repositories\MasterProduk;
 use App\MasterProduk;
 use App\Repositories\MasterProdukReseps\MasterProdukReseps;
 use App\Repositories\RepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class MasterProdukRepository implements RepositoryInterface
@@ -34,8 +35,8 @@ class MasterProdukRepository implements RepositoryInterface
 //        dump($result);
 //        die;
 
-        if ($result){
-            foreach ($data["master_produk_reseps"] as $key => $value){
+        if ($result) {
+            foreach ($data["master_produk_reseps"] as $key => $value) {
                 $master_produk_reseps = array_merge($value, array("master_produk_id" => $result->getAttribute("id")));
                 $resultDetail = $this->masterProdukReseps->create($master_produk_reseps);
 //                dump($resultDetail);
@@ -48,6 +49,26 @@ class MasterProdukRepository implements RepositoryInterface
     public function update(array $data, int $id)
     {
         // TODO: Implement update() method.
+        $find = $this->find($id);
+
+        $result = $find->update($data["master_produks"]);
+        if ($result) {
+            $master_produk_reseps_delete = $this->masterProdukReseps->findBy("master_produk_id", $id);
+            if ($master_produk_reseps_delete instanceof Collection) {
+                foreach ($master_produk_reseps_delete as $key => $value) {
+                    $this->masterProdukReseps->delete($value["id"]);
+                }
+            }
+
+            foreach ($data["master_produk_reseps"] as $key => $value) {
+                $master_produk_reseps = array_merge($value, array("master_produk_id" => $id));
+                $resultDetail = $this->masterProdukReseps->create($master_produk_reseps);
+            }
+            $result = $this->find($id);
+        } else {
+            $result = false;
+        }
+        return $result;
     }
 
     public function updateBy(string $field, string $value, array $data)
@@ -65,8 +86,7 @@ class MasterProdukRepository implements RepositoryInterface
         // TODO: Implement find() method.
         try {
             $result = MasterProduk::findOrFail($id);
-        }
-        catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             throw new \App\Exceptions\ModelNotFoundException;
         }
 

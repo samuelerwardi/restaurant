@@ -13,42 +13,46 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal" id="form" action="{{ action("ProductController@store") }}"
+        <form class="form-horizontal" id="form" action="{{ action("ProductController@update", ['id' => $datas->id]) }}"
               method="post">
+            @method('PUT')
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Kode Barang</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">
+                        Kode Barang
+                        {{ \App\Helpers\Helper::development() }}
+                    </label>
                     <div class="col-sm-5">
                         <input type="text" name="produk_kode" class="form-control primarykey" placeholder="Kode Barang"
-                               id="kode" required>
+                               id="kode" value="<?php echo $datas["produk_kode"] ?>" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Nama Barang</label>
                     <div class="col-sm-5">
-                        <input name="produk_nama" type="text" class="form-control" id="nama" placeholder="Nama"
+                        <input name="produk_nama" value="<?php echo $datas["produk_nama"] ?>" type="text" class="form-control" id="nama" placeholder="Nama"
                                required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Keuntungan</label>
                     <div class="col-sm-5">
-                        <input name="keuntungan" type="text" class="form-control keuntungan" id="nominal2"
+                        <input name="keuntungan" value="<?php echo $datas["keuntungan"] ?>" type="text" class="form-control keuntungan" id="nominal2"
                                placeholder="Keuntungan IDR">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Harga Jual</label>
                     <div class="col-sm-5">
-                        <input name="harga_jual" type="text" class="form-control" id="harga_jual"
+                        <input name="harga_jual" value="<?php echo $datas["harga_jual"] ?>" type="text" class="form-control" id="harga_jual"
                                placeholder="Harga Jual">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Deskripsi</label>
                     <div class="col-sm-5">
-                        <textarea name="deskripsi" class="form-control" placeholder="deskripsi"
-                                  id="deskripsi"></textarea>
+                        <textarea name="deskripsi" class="form-control" 
+                                placeholder="deskripsi" id="deskripsi"><?php echo $datas["deskripsi"] ?></textarea>
                     </div>
                 </div>
             </div>
@@ -69,6 +73,29 @@
                         </button>
                     </div>
                 </div>
+                <?php if (!empty($datas->getMasterProdukReseps())): ?>
+                    <?php foreach ($datas->getMasterProdukReseps() as $key => $value): ?>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Bahan</label>
+                            <div class="col-sm-4">
+                                <select name="kode_bahan[]" class="form-control kode_bahan">
+                                    <option value="<?php echo $value->getMasterBahan()[0]["id"]; ?>" selected>
+                                        <?php echo $value->getMasterBahan()[0]["nama_bahan"] ?>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <input name="qty[]" type="number" class="form-control" id="qty" value="<?php echo $value["qty"] ?>"
+                                       placeholder="Qty" required autocomplete="off" value="">
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-default btn-remove-row">
+                                    <i class="fa fa-plus">Remove</i>
+                                </button>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                <?php endif ?>
             </div>
             <div class="box-footer">
                 <div class="col-sm-offset-2 col-sm-5">

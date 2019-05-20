@@ -51,7 +51,7 @@
                             <td><?php echo $value['satuan'] ?></td>
                             <td><?php echo $value['created_at'] ?></td>
                             <td width="16%">
-                                <a href="{{action('ProductController@edit',['id' => $value['id']])}}" class="btn btn-default fa fa-edit btn-default btn_edit">
+                                <a href="{{action('ProductController@edit',$value['id'])}}" class="btn btn-default fa fa-edit btn-default btn_edit">
                                     <i class="icon-pencil icon-white"></i> Edit
                                 </a>
 

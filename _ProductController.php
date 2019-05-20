@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductsStoreRequest;
-use App\Http\Requests\ProductsUpdateRequest;
 use App\MasterProduk;
-use App\Product;
 use App\Repositories\MasterProduk\MasterProdukRepository;
 use Illuminate\Http\Request;
 
@@ -66,15 +64,14 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\MasterProduk  $masterProduk
      * @return \Illuminate\Http\Response
      */
-    public function edit(MasterProduk $product)
+    public function edit(MasterProduk $masterProduk)
     {
         //
-        $this->data = $this->repo->find($product->getAttribute("id"));
-        //dump($this->data->getMasterProdukReseps());
-        return view("product.edit", ["datas" => $this->data]);
+        dump($masterProduk->getAttribute("id"));
+        die;
     }
 
     /**
@@ -84,11 +81,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductsUpdateRequest $request, MasterProduk $product)
+    public function update(Request $request, $id)
     {
         //
-        $this->data = $this->repo->update($request->all(),$product["id"]);
-        return redirect()->back()->with("message", "Success Updated");
     }
 
     /**

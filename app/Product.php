@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class MasterProduk
  * @package App
  */
-class MasterProduk extends Model
+class Product extends Model
 {
 
     /**
@@ -25,8 +25,8 @@ class MasterProduk extends Model
     protected $fillable = [
         'produk_kode',
         'produk_nama',
-        'deskripsi',
         'keuntungan',
+        'deskripsi',
         'harga_jual',
         'created_at',
         'updated_at'

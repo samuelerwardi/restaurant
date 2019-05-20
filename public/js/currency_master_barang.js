@@ -1,4 +1,5 @@
 $.fn.currency = function(){
+    console.log("samuel");
     var name = $(this).attr("name");
     var id = $(this).attr("id");
     var value = $('<input type="hidden" name="' + name + '" id="' + id + '-value">');
@@ -35,6 +36,9 @@ $.fn.currency = function(){
         $(this).val(format($(this).val()));
         console.log(val);
     });
+    if ($(this).val() != null) {
+        $(this).trigger('keyup');
+    };
 }
 var getNumberValue = function(val){
     val = val.replace("$","");

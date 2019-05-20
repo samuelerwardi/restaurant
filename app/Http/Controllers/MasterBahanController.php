@@ -74,8 +74,6 @@ class MasterBahanController extends Controller
     public function edit(MasterBahan $masterBahan)
     {
         //
-        dump($masterBahan);
-        die;
         $this->data = $this->repo->find($masterBahan->getAttribute("id"));
         return view("master_bahan.edit", ["datas" => $this->data]);
     }

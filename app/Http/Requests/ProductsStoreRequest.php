@@ -48,6 +48,7 @@ class ProductsStoreRequest extends FormRequest
             "produk_kode" => $data["produk_kode"],
             "produk_nama" => $data["produk_nama"],
             "keuntungan" => $data["keuntungan"],
+            "deskripsi" => $data["deskripsi"],
             "harga_jual" => $data["harga_jual"],
             "created_at" => Carbon::now()
         ];

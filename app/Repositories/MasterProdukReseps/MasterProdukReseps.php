@@ -5,6 +5,7 @@ namespace App\Repositories\MasterProdukReseps;
 
 
 use App\Repositories\RepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class MasterProdukReseps implements RepositoryInterface
@@ -40,6 +41,8 @@ class MasterProdukReseps implements RepositoryInterface
     public function delete(int $id)
     {
         // TODO: Implement delete() method.
+        $result = \App\MasterProdukReseps::destroy($id);
+        return $result;
     }
 
     public function find(int $id, $columns = array('*'))
@@ -50,5 +53,12 @@ class MasterProdukReseps implements RepositoryInterface
     public function findBy(string $field, string $value, $columns = ['*'])
     {
         // TODO: Implement findBy() method.
+        try {
+            $results = \App\MasterProdukReseps::where($field, $value)->get();
+        }
+        catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            throw new \App\Exceptions\ModelNotFoundException;
+        }
+        return $results;
     }
 }
