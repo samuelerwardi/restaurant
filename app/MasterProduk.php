@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class MasterProduk
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MasterProduk extends Model
 {
-
+    use SoftDeletes;
     /**
      * @var bool
      */

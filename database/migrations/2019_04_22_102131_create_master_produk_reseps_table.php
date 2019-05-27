@@ -19,6 +19,7 @@ class CreateMasterProdukResepsTable extends Migration
             $table->integer('master_bahan_id');
             $table->decimal('qty',11,2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

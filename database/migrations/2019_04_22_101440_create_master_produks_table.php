@@ -17,9 +17,11 @@ class CreateMasterProduksTable extends Migration
             $table->bigIncrements('id');
             $table->string('produk_kode');
             $table->string('produk_nama');
+            $table->string('deskripsi');
             $table->decimal('keuntungan',11,2);
             $table->decimal('harga_jual',11,2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
