@@ -82,21 +82,21 @@ $(function(){
 
 
     $("#kodebarang").autocomplete({
-      source: "/master_barang/allProduct",
+      source: "/product/search",
       open: function(){
         $("#namabarang").html("");
         $("#harga").html("");
         $("#subtotal").html("0");
       },
       focus: function( event, ui ) {
-        $("#kodebarang").val(ui.item.kode_barang);
+        $("#kodebarang").val(ui.item.id);
         return false;
       },
       select: function( event, ui ) {
-        $("#kodebarang").val(ui.item.kode_barang);
-        $("#namabarang").html(ui.item.nama_barang);
+        $("#kodebarang").val(ui.item.id);
+        $("#namabarang").html(ui.item.produk_nama);
         $("#harga").html(ui.item.harga_jual);
-        console.log(ui.item.nama_barang);
+        console.log(ui.item.produk_nama);
         // $("#category")
         category = ui.item.category;
         $("#subtotal").html("0");
@@ -105,7 +105,7 @@ $(function(){
       }
     }).data("ui-autocomplete")._renderItem = function( ul, item ) {
       return $( "<li>" )
-        .append( "<a>" + item.kode_barang + " - " + item.nama_barang + "</a>" )
+        .append( "<a>" + item.id + " - " + item.produk_nama + "</a>" )
         .appendTo( ul );
     };
     $("#kodebarang").keyup(function(){
@@ -118,7 +118,7 @@ $(function(){
 
     // $("#kodebarang").scannerDetection(function(){
     //   $.ajax({
-    //         url:"/master_barang/allProduct/"+$(this).val(),
+    //         url:"/product/search/"+$(this).val(),
     //         success: function(data){
     //           console.log(data);
     //           $("#namabarang").html(data.nama_barang);
@@ -249,9 +249,9 @@ $(function(){
     });
     $("#qty").keyup(function(){
         $.ajax({
-          url:"/master_barang/currentStok",
+          url:"/product/validate_stok",
           type:"post",
-          data:{id_barang:$("#kodebarang").val(),qty:$("#qty").val()},
+          data:{id:$("#kodebarang").val(),qty:$("#qty").val()},
             success:function(data){
               if (data=="OUT OF STOCK"){
                 isEnough=false;
@@ -268,10 +268,10 @@ $(function(){
             var id = $($(this).parent().siblings()[0]).find("input").val();
             var response = $(this).siblings(".error-container").find(".response");
             $.ajax({
-              url:"/master_barang/currentStok",
+              url:"/product/validate_stok",
               type:"post",
-              data:{id_barang : id, qty: $(this).val()},
-              // data:{id_barang:$("#kodebarang").val(),qty:$("[name='qty[]']").val()},
+              data:{id : id, qty: $(this).val()},
+              // data:{id:$("#kodebarang").val(),qty:$("[name='qty[]']").val()},
                 success:function(data){
                   if (data=="OUT OF STOCK"){
                     // alert("OUT");

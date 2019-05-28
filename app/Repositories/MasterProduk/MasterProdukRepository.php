@@ -98,4 +98,10 @@ class MasterProdukRepository implements RepositoryInterface
         // TODO: Implement findBy() method.
     }
 
+    public function validate_stok(array $data){
+        $product = $this->find($data["id"]);
+        dump($product->getMasterProdukReseps());
+        die;
+    }
+
 }

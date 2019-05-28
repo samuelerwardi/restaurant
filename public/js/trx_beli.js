@@ -6,27 +6,27 @@ $(function(){
   // $(".datepicker").keydown(function(){return false;});
 
   $("#namasupplier").autocomplete({
-      source: "master_supplier/allSupplier",
+      source: "/supplier/search",
       open: function(){
-        $("#kodesupplier").val("");
+        $("#supplier_id").val("");
       },
       focus: function( event, ui ) {
-        $("#namasupplier").val(ui.item.nama_supplier);
+        $("#namasupplier").val(ui.item.nama);
         return false;
       },
       select: function( event, ui ) {
-        $("#kodesupplier").val(ui.item.kode_supplier); //yg ui.item.namafield dari json
-        $("#namasupplier").val(ui.item.nama_supplier);
+        $("#supplier_id").val(ui.item.id); //yg ui.item.namafield dari json
+        $("#namasupplier").val(ui.item.nama);
         return false;
       }
     }).data("ui-autocomplete")._renderItem = function( ul, item ) {
       return $( "<li>" )
-        .append( "<a>" + item.kode_supplier + " - " + item.nama_supplier + "</a>" )
+        .append( "<a>" + item.id + " - " + item.nama + "</a>" )
         .appendTo( ul );
     };
     $("#namasupplier").keyup(function(){
       if($(this).val()==""){
-        $("#kodesupplier").val("");
+        $("#supplier_id").val("");
       }
     });
 
@@ -39,42 +39,29 @@ $(function(){
      });
 
     $("#kodebarang").autocomplete({
-      source: "master_barang/allProductBeli",
+      source: "/master_bahan/search",
       open: function(){
         $("#namabarang").html("");
         $("#harga").html("0");
         $("#subtotal").html("0");
       },
       focus: function( event, ui ) {
-        $("#kodebarang").val(ui.item.kode_barang);
+        $("#kodebarang").val(ui.item.id);
         return false;
       },
       select: function( event, ui ) {
-        $("#kodebarang").val(ui.item.kode_barang);
-        $("#namabarang").html(ui.item.nama_barang);
+        $("#kodebarang").val(ui.item.id);
+        $("#namabarang").html(ui.item.nama_bahan);
         $("#harga").html(ui.item.harga_beli);
         $("#subtotal").html("0");
-        $("#qty").focus();
+        $("#harga").focus();
         return false;
       }
     }).data("ui-autocomplete")._renderItem = function( ul, item ) {
       return $( "<li>" )
-        .append( "<a>" + item.kode_barang + " - " + item.nama_barang + "</a>" )
+        .append( "<a>" + item.id + " - " + item.nama_bahan + "</a>" )
         .appendTo( ul );
     };
-
-    $("#kodebarang").scannerDetection(function(){
-      $.ajax({
-            url:"master_barang/allProduct/"+$(this).val(),
-            success: function(data){
-              console.log(data);
-              $("#namabarang").html(data.nama_barang);
-              $("#harga").html(data.harga_beli);
-              $("#qty").focus();
-            }
-          });
-      });
-
 
     $("#kodebarang").keyup(function(){
       if($(this).val()==""){
@@ -86,8 +73,7 @@ $(function(){
 
     $("#qty, #harga").keyup(function(){
       var qty = getNumberValue($("#qty").val());
-      console.log(qty);
-      var harga = $("#harga").html();
+      var harga = $("#harga").val();
       if(!isNaN(qty) && qty != "" && !isNaN(harga) && harga != ""){
         qty = parseInt(qty);
         harga = parseInt(harga);
@@ -153,8 +139,8 @@ $(function(){
                     $("#namabarang").html()+
                   '</td>'+
                   '<td>'+
-                    '<input type="hidden" name="harga[]" value="'+$("#harga").html()+'">'+
-                    $("#harga").html()+
+                    '<input type="hidden" name="harga[]" value="'+$("#harga").val()+'">'+
+                    $("#harga").val()+
                   '</td>'+
                   '<td>'+
                     '<input type="hidden" name="qty[]" value="'+$("#qty").val()+'">'+
@@ -175,7 +161,7 @@ $(function(){
       countGrandtotal();
       $("#kodebarang").val("");
       $("#namabarang").html("");
-      $("#harga").html("");
+      $("#harga").val("");
       $("#qty").val("");
       $("#subtotal").html("0");
       $("#kodebarang").focus();

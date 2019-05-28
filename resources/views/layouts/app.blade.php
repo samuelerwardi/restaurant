@@ -63,7 +63,7 @@
                                 <span>Home</span>
                             </a>
                         </li>
-                        <li class="treeview ">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-users"></i>
                                     <span class="title">User Management</span>
@@ -76,6 +76,29 @@
                                     <a href="http://dev.ultimate-pos.localhost/users">
                                         <i class="fa fa-user"></i>
                                         <span class="title">Users</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i>
+                                    <span class="title">Suppliers</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="">
+                                    <a href="{{action('SupplierController@create')}}">
+                                        <i class="fa fa-plus"></i>
+                                        <span class="title">Add</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="{{action('SupplierController@index')}}">
+                                        <i class="fa fa-list"></i>
+                                        <span class="title">List</span>
                                     </a>
                                 </li>
                             </ul>
@@ -165,32 +188,8 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li class="">
-                                    <a href="http://dev.ultimate-pos.localhost/reports/profit-loss">
-                                    <i class="fa fa-money"></i>Profit / Loss Report</a>
-                                </li>
-
-                                <li class="">
-                                    <a href="http://dev.ultimate-pos.localhost/reports/purchase-sell">
-                                        <i class="fa fa-exchange"></i>Purchase &amp; Sale
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="http://dev.ultimate-pos.localhost/reports/tax-report">
-                                        <i class="fa fa-tumblr" aria-hidden="true"></i>Tax Report
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="http://dev.ultimate-pos.localhost/reports/customer-supplier">
-                                        <i class="fa fa-address-book"></i>Supplier &amp; Customer Report
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="http://dev.ultimate-pos.localhost/reports/customer-group">
-                                        <i class="fa fa-users"></i>Customer Groups Report
-                                    </a>
+                                    <a href="{{action('ReportController@transaksi_pembelian')}}">
+                                    <i class="fa fa-money"></i>Pembelian</a>
                                 </li>
                                 <li class="">
                                     <a href="http://dev.ultimate-pos.localhost/reports/stock-report">

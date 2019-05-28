@@ -13,11 +13,12 @@ class CreatePembeliansTable extends Migration
      */
     public function up()
     {
-        Schema::create('pembelians', function (Blueprint $table) {
+        Schema::create('transaksi_pembelian', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger("supplier");
+            $table->bigInteger("supplier_id");
             $table->decimal('total',11,2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,6 @@ class CreatePembeliansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pembelians');
+        Schema::dropIfExists('transaksi_pembelian');
     }
 }

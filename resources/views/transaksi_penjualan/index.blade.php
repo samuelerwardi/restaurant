@@ -133,18 +133,4 @@
 @section('javascript')
     <script src="{{ asset('js/currency.js') }}"></script>
     <script src="{{ asset('js/trx.js') }}"></script>
-    <script type="text/javascript">
-      $(function(){
-        $("#combocustomer").change(function(){
-          if ($(this).val()=="") {
-            $("#newcustomer").fadeIn();
-            $("#methodpayment").fadeOut();
-          } 
-          else{
-            $("#newcustomer").fadeOut();
-            $("#methodpayment").fadeIn();
-          };
-        });
-      });
-    </script>
 @endsection

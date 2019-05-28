@@ -1,24 +1,16 @@
 <?php
 
 
-namespace App\Repositories\TransaksiPembelian;
+namespace App\Repositories\TransaksiPembelianDetails;
 
 
 use App\Repositories\RepositoryInterface;
-use App\Repositories\TransaksiPembelianDetails\TransaksiPembelianDetailsRepository;
 use App\TransaksiPembelian;
+use App\TransaksiPembelianDetails;
 use Illuminate\Database\Eloquent\Model;
 
-class TransaksiPembelianRepository implements RepositoryInterface
+class TransaksiPembelianDetailsRepository implements RepositoryInterface
 {
-
-//    /* @var $transaksiPembelianDetails \App\Repositories\TransaksiPembelian\TransaksiPembelianDetailsRepository */
-    public $transaksiPembelianDetailsRepository;
-
-    public function __construct(TransaksiPembelianDetailsRepository $transaksiPembelianDetailsRepository)
-    {
-        $this->transaksiPembelianDetailsRepository = $transaksiPembelianDetailsRepository;
-    }
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
@@ -32,14 +24,7 @@ class TransaksiPembelianRepository implements RepositoryInterface
     public function create(array $data): Model
     {
         // TODO: Implement create() method.
-        $result = TransaksiPembelian::create($data["transaksi_pembelian"]);
-
-        if ($result){
-            foreach ($data["transaksi_pembelian_details"] as $key => $value) {
-                $details = array_merge($value, array("transaksi_pembelian_id" => $result->getAttribute("id")));
-                $resultDetail = $this->transaksiPembelianDetailsRepository->create($details);
-            }
-        }
+        $result = TransaksiPembelianDetails::create($data);
         return $result;
     }
 

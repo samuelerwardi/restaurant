@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductsStoreRequest;
 use App\Http\Requests\ProductsUpdateRequest;
+use App\Http\Requests\TransaksiPenjualanValidateStokRequest;
 use App\MasterProduk;
 use App\Product;
 use App\Repositories\MasterProduk\MasterProdukRepository;
@@ -100,5 +101,15 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(){
+        $this->data = $this->repo->all();
+        return response()->json($this->data);
+    }
+
+    public function validate_stok(TransaksiPenjualanValidateStokRequest $request){
+        $this->data = $this->repo->validate_stok($request->all());
+        return response()->json($request->all());
     }
 }

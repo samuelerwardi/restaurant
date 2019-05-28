@@ -13,8 +13,7 @@
         </div><!-- /.box-header -->
         <!-- form start -->
         <div class="row">
-            <form class="form-horizontal" method="post" action="transaksi_pembelian/insertTransaction" id="form" target="iframecetakpo">
-                <input type="hidden" value="" name="trxid">
+            <form class="form-horizontal" method="post" action="{{action("TransaksiPembelianController@store")}}" id="form">
                 <div class="col-md-12" style="margin-bottom:50px">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -32,7 +31,7 @@
                         <div class="form-group">
                             <label class="col-md-6" for="tanggalpenjualan">Supplier</label>
                             <div class="col-md-6">
-                                <input type="hidden" name="kodesupplier" id="kodesupplier">
+                                <input type="hidden" name="supplier_id" id="supplier_id">
                                 <input type="text" name="namasupplier" id="namasupplier" class="form-control  ui-autocomplete-input" required="" autocomplete="off">
                             </div>
                         </div>
@@ -49,10 +48,8 @@
                         <span id="namabarang" class="form-control uneditable-input"></span>
                     </div>
                     <div class="col-md-2">
-                        <label for="harga">Harga</label>
-                        <span id="harga" class="form-control uneditable-input"></span>
-                        <input type="hidden" id="category" class="form-control" autocomplete="off">
-                        <!-- <input type="text" id="harga" class="form-control" autocomplete="off"> -->
+                        <label for="harga">Harga</label>                    
+                        <input type="text" id="harga" class="form-control" autocomplete="off">
                     </div>
 
                     <div class="col-md-2">
@@ -84,11 +81,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="empty-detail">
-                            <td colspan="6">Detail masih kosong</td>
-                        </tr>
-                        <!--                                                  <tr class="empty-detail">
-                                                </tr> -->
+                            <tr class="empty-detail">
+                                <td colspan="6">Detail masih kosong</td>
+                            </tr>
                         </tbody>
                         <tfoot>
                         <tr>
@@ -99,7 +94,8 @@
                             </th>
                             <td colspan="2" id="grandtotal">
                                 <input type="hidden" name="grandtotal" value="0">
-                                0                        </td>
+                                0
+                            </td>
                         </tr>
                         <tr>
                             <th colspan="4">

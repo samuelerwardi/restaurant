@@ -116,4 +116,9 @@ class MasterBahanController extends Controller
 //        die;
         return response()->json(array("results" => $json));
     }
+
+    public function search(){
+        $this->data = $this->repo->all();
+        return response()->json($this->data);
+    }
 }

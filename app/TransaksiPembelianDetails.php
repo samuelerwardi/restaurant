@@ -5,8 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Supplier extends Model
+class TransaksiPembelianDetails extends Model
 {
+    //
     use SoftDeletes;
     public $timestamps = false;
     //
@@ -14,17 +15,16 @@ class Supplier extends Model
      * @var array
      */
     protected $fillable = [
-        'kode',
-        'nama',
-        'telepon',
-        'email',
-        'alamat',
-        'contact_person',
+        'transaksi_pembelian_id',
+        'master_bahan_id',
+        'price',
+        'qty',
+        'subtotal',
         'created_at',
         'updated_at'
     ];
     /**
      * @var string
      */
-    protected $table = 'suppliers';
+    protected $table = 'transaksi_pembelian_details';
 }

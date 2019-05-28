@@ -13,11 +13,15 @@ class CreatePembelianDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pembelian_details', function (Blueprint $table) {
+        Schema::create('transaksi_pembelian_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('pembelian');
-//            $table->
+            $table->bigInteger('transaksi_pembelian_id');
+            $table->integer('master_bahan_id');
+            $table->decimal("price",11,2);
+            $table->decimal('qty',11,2);
+            $table->decimal("subtotal",11,2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +32,6 @@ class CreatePembelianDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pembelian_details');
+        Schema::dropIfExists('transaksi_pembelian_details');
     }
 }
