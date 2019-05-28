@@ -100,7 +100,12 @@ class MasterProdukRepository implements RepositoryInterface
 
     public function validate_stok(array $data){
         $product = $this->find($data["id"]);
-        dump($product->getMasterProdukReseps());
+//        dump($product->getMasterProdukReseps());
+        if (!empty($product->getMasterProdukReseps())){
+            foreach ($product->getMasterProdukReseps() as $key => $value){
+                dump($value->getAttribute("master_bahan_id"));
+            }
+        }
         die;
     }
 

@@ -5,11 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class MasterBahan
- * @package App
- */
-class MasterBahan extends Model
+class MasterBahanStok extends Model
 {
     use SoftDeletes;
     public $timestamps = false;
@@ -18,21 +14,19 @@ class MasterBahan extends Model
      * @var array
      */
     protected $fillable = [
-        'kode_bahan',
-        'nama_bahan',
-        'satuan',
+        'master_bahans_id',
+        'qty',
+        'class',
         'created_at',
         'updated_at',
     ];
     /**
      * @var string
      */
-    protected $table = 'master_bahans';
+    protected $table = 'master_bahans_stok';
 
-    public function getMasterBahanStok()
+    public function MasterBahan()
     {
-        $query = $this->hasMany("App\MasterBahanStok","id","master_bahans_id");
-
-        return $query->get();
+        return $this->belongsTo('App\MasterBahan');
     }
 }
