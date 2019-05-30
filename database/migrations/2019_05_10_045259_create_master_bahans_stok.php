@@ -15,10 +15,11 @@ class CreateMasterBahansStok extends Migration
     {
         Schema::create('master_bahans_stok', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('kode_bahan');
-            $table->bigInteger('stok');
-//            $table->decimal("jumlah",11,2);
+            $table->bigInteger('master_bahans_id');
+            $table->bigInteger('qty');
+            $table->string("class");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
