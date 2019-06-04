@@ -22,6 +22,7 @@ class TransaksiPembelianRepository implements RepositoryInterface
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
+        return TransaksiPembelian::all();
     }
 
     public function paginate(int $perPage = 15, $columns = ['*'])
@@ -62,6 +63,13 @@ class TransaksiPembelianRepository implements RepositoryInterface
     public function find(int $id, $columns = array('*'))
     {
         // TODO: Implement find() method.
+        // TODO: Implement find() method.
+        try {
+            $result = TransaksiPembelian::findOrFail($id);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            throw new \App\Exceptions\ModelNotFoundException;
+        }
+        return $result;
     }
 
     public function findBy(string $field, string $value, $columns = ['*'])

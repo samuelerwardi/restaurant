@@ -23,4 +23,14 @@ class TransaksiPembelian extends Model
      * @var string
      */
     protected $table = 'transaksi_pembelian';
+
+    public function getSupplier(){
+        $query = $this->hasOne("App\Supplier","id","supplier_id");
+        return $query->first();
+    }
+
+    public function getTransaksiPembelianDetails(){
+        $query = $this->hasMany("App\TransaksiPembelianDetails","transaksi_pembelian_id","id");
+        return $query->get();
+    }
 }

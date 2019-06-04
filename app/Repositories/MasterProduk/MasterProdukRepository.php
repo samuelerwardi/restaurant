@@ -3,6 +3,7 @@
 namespace App\Repositories\MasterProduk;
 
 use App\MasterProduk;
+use App\Repositories\MasterBahanStok\MasterBahanStokRepository;
 use App\Repositories\MasterProdukReseps\MasterProdukReseps;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,9 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class MasterProdukRepository implements RepositoryInterface
 {
-    public function __construct(MasterProdukReseps $masterProdukReseps)
+    /* @var $masterProdukReseps \App\Repositories\MasterBahanStok\MasterBahanStokRepository */
+    private $masterProdukReseps;
+    /* @var $masterBahanStokRepository \App\Repositories\MasterBahanStok\MasterBahanStokRepository */
+    private $masterBahanStokRepository;
+
+    public function __construct(MasterProdukReseps $masterProdukReseps, MasterBahanStokRepository $masterBahanStokRepository)
     {
         $this->masterProdukReseps = $masterProdukReseps;
+        $this->masterBahanStokRepository = $masterBahanStokRepository;
     }
 
     public function all(array $columns = ['*'])
@@ -98,15 +105,33 @@ class MasterProdukRepository implements RepositoryInterface
         // TODO: Implement findBy() method.
     }
 
-    public function validate_stok(array $data){
+    public function validate_stok(array $data)
+    {
+        $result = ["success" => [], "errors" => []];
         $product = $this->find($data["id"]);
-//        dump($product->getMasterProdukReseps());
-        if (!empty($product->getMasterProdukReseps())){
-            foreach ($product->getMasterProdukReseps() as $key => $value){
-                dump($value->getAttribute("master_bahan_id"));
+        if (!empty($product->getMasterProdukReseps())) {
+            foreach ($product->getMasterProdukReseps() as $key => $value) {
+                $stok_bahan = $this->masterBahanStokRepository->sumQtyByMasterBahansId($value->getAttribute("master_bahan_id"));
+                if (!empty($stok_bahan) && $stok_bahan->qty >= ($value->qty * $data["qty"])) {
+                    $result['success'][] = $value->id;
+                } else {
+                    $result['errors'][] = $value->id;
+                }
             }
         }
-        die;
+        return $result;
+    }
+
+    public function findLike(string $search, $columns = array('*'))
+    {
+        // TODO: Implement find() method.
+        try {
+            $result = MasterProduk::where("produk_nama", 'like', '%' . $search . '%')->orWhere("produk_kode", 'like', '%' . $search . '%')->get();
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            throw new \App\Exceptions\ModelNotFoundException;
+        }
+
+        return $result;
     }
 
 }

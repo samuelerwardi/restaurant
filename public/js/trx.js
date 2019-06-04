@@ -6,6 +6,7 @@ $(function(){
   // });
   // $(".datepicker").keydown(function(){return false;});
   var afterpph = 0
+  const errorMessageQty = "Stok Habis";
   $(".remove").on("click",function(){
     $(this).parents("tr").remove();
     countGrandtotal();
@@ -253,41 +254,42 @@ $(function(){
           type:"post",
           data:{id:$("#kodebarang").val(),qty:$("#qty").val()},
             success:function(data){
-              if (data=="OUT OF STOCK"){
-                isEnough=false;
-                $("#response").fadeIn();
-                $("#response").html(data);
-              }else{
+              if (data.errors.length > 0){
+                  isEnough=false;
+                  $("#response").fadeIn('slow');
+                  $("#response").html(errorMessageQty);
+              }
+              else{
                 isEnough=true;
-                $("#response").fadeOut();
+                $('#response').fadeOut('slow');
               }
             }
         });
     });
     $("[name='qty[]']").keyup(function(){
-            var id = $($(this).parent().siblings()[0]).find("input").val();
-            var response = $(this).siblings(".error-container").find(".response");
-            $.ajax({
-              url:"/product/validate_stok",
-              type:"post",
-              data:{id : id, qty: $(this).val()},
-              // data:{id:$("#kodebarang").val(),qty:$("[name='qty[]']").val()},
-                success:function(data){
-                  if (data=="OUT OF STOCK"){
-                    // alert("OUT");
-                    // isEnough=false;
-                    console.log(response);
-                    response.fadeIn();
-                    response.html(data);
-                  }else{
-                                  console.log(response);
-                    // alert("isEnough");
-                    // isEnough=true;
-                    response.fadeOut();
-                  }
+          var id = $($(this).parent().siblings()[0]).find("input").val();
+          var response = $(this).siblings(".error-container").find(".response");
+          $.ajax({
+            url:"/product/validate_stok",
+            type:"post",
+            data:{id : id, qty: $(this).val()},
+            // data:{id:$("#kodebarang").val(),qty:$("[name='qty[]']").val()},
+              success:function(data){
+                if (data=="OUT OF STOCK"){
+                  // alert("OUT");
+                  // isEnough=false;
+                  console.log(response);
+                  response.fadeIn();
+                  response.html(data);
+                }else{
+                                console.log(response);
+                  // alert("isEnough");
+                  // isEnough=true;
+                  response.fadeOut();
                 }
-            });
-        });
+              }
+          });
+      });
 
 
     $(document).on("click",".remove",function(){

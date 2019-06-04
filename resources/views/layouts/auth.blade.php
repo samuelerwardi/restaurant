@@ -28,10 +28,6 @@
         <input type="hidden" id="status_span" data-status="{{ session('status.success') }}" data-msg="{{ session('status.msg') }}">
     @endif
 
-    @if(!isset($no_header))
-        @include('layouts.partials.header-auth')
-    @endif
-
     @yield('content')
     
     @include('layouts.partials.javascripts')

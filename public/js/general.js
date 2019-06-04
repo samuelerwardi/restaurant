@@ -36,5 +36,10 @@ $(function () {
 $(document).ready(function($) {
     $(".datatable-client").DataTable({
 
-    });    
+    });
+
+    $(".datepicker").datepicker({
+        format:"yyyy-mm-dd",
+        autoclose : true
+    });
 });

@@ -4,6 +4,7 @@
 namespace App\Repositories\MasterBahanStok;
 
 
+use App\MasterBahanStok;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
@@ -43,17 +44,28 @@ class MasterBahanStokRepository implements RepositoryInterface
     public function find(int $id, $columns = array('*'))
     {
         // TODO: Implement find() method.
+        try {
+            $result = MasterBahanStok::findOrFail($id);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            throw new \App\Exceptions\ModelNotFoundException;
+        }
+        return $result;
     }
 
     public function findBy(string $field, string $value, $columns = ['*'])
     {
         // TODO: Implement findBy() method.
         try {
-            $results = \App\MasterProdukReseps::where($field, $value)->get();
+            $results = \App\MasterBahanStok::where($field, $value)->get();
         }
         catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             throw new \App\Exceptions\ModelNotFoundException;
         }
         return $results;
+    }
+
+    public function sumQtyByMasterBahansId($master_bahans_id){
+        $results = MasterBahanStok::SumQtyByMasterBahansId($master_bahans_id);
+        return $results->first();
     }
 }

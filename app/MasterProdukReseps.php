@@ -26,7 +26,6 @@ class MasterProdukReseps extends Model
     public function getMasterBahan()
     {
         $query = $this->hasOne("App\MasterBahan","id","master_bahan_id");
-
         return $query->get();
     }
 

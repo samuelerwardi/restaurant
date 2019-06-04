@@ -64,7 +64,7 @@
                         <!-- The user image in the navbar-->
                         <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span>Hallo Username</span>
+                        <span>Hallo {{ Auth::User()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -74,7 +74,7 @@
                                      alt="Logo"></span>
                             @endif
                             <p>
-                               Hallo Username
+                               Hallo {{ Auth::User()->name }}
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -84,7 +84,7 @@
                                 <a href="#" class="btn btn-default btn-flat">@lang('lang_v1.profile')</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">@lang('lang_v1.sign_out')</a>
+                                <a href="{{action('Auth\LoginController@logout')}}" class="btn btn-default btn-flat">@lang('lang_v1.sign_out')</a>
                             </div>
                         </li>
                     </ul>

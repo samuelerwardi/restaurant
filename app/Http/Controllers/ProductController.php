@@ -103,13 +103,13 @@ class ProductController extends Controller
         //
     }
 
-    public function search(){
-        $this->data = $this->repo->all();
+    public function search(Request $request){
+        $this->data = $this->repo->findLike($request->get("term"));
         return response()->json($this->data);
     }
 
     public function validate_stok(TransaksiPenjualanValidateStokRequest $request){
         $this->data = $this->repo->validate_stok($request->all());
-        return response()->json($request->all());
+        return response()->json($this->data);
     }
 }

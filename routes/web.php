@@ -17,33 +17,32 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function(){
+	/* Home */
+	Route::get('/home', 'HomeController@index')->name('home');
+	/* Master Bahan */
+	Route::get('master_bahan/list','MasterBahanController@list');
+	Route::get('master_bahan/search','MasterBahanController@search');
+	Route::resource('master_bahan', 'MasterBahanController');
+	/* Master Supplier */
+	Route::get('supplier/search','SupplierController@search');
+	Route::resource('supplier', 'SupplierController');
+	/* Product */
+	Route::post('product/validate_stok','ProductController@validate_stok');
+	Route::get('product/search','ProductController@search');
+	Route::resource('product', 'ProductController');
+	/* Transaksi */	
+	Route::resource('transaksi_pembelian', 'TransaksiPembelianController');
+	Route::resource('transaksi_penjualan', 'TransaksiPenjualanController');
+	/* Report */
+	Route::prefix('report')->group(function () {
+	    Route::get('transaksi_penjualan','ReportController@transaksi_penjualan');
+		Route::get('transaksi_penjualan/{id?}', 'ReportController@transaksi_penjualan_view_detail');
+	    Route::get('transaksi_pembelian','ReportController@transaksi_pembelian');
+		Route::get('transaksi_pembelian/{id?}', 'ReportController@transaksi_pembelian_view_detail');
+	});
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Route::post('/products', 'ProductController@store');
-//Route::get('/products', 'ProductController@index');
-
-
-Route::get('master_bahan/list','MasterBahanController@list');
-Route::get('master_bahan/search','MasterBahanController@search');
-Route::resource('master_bahan', 'MasterBahanController');
-
-Route::post('product/validate_stok','ProductController@validate_stok');
-Route::get('product/search','ProductController@search');
-Route::resource('product', 'ProductController');
-Route::resource('master_produk', 'MasterProdukController');
-
-
-Route::resource('transaksi_pembelian', 'TransaksiPembelianController');
-
-Route::resource('transaksi_penjualan', 'TransaksiPenjualanController');
-
-Route::get('supplier/search','SupplierController@search');
-Route::resource('supplier', 'SupplierController');
-
-Route::prefix('report')->group(function () {
-    Route::get('transaksi_pembelian','ReportController@transaksi_pembelian');
+	Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 });
+
+

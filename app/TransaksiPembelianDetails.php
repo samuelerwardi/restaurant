@@ -27,4 +27,13 @@ class TransaksiPembelianDetails extends Model
      * @var string
      */
     protected $table = 'transaksi_pembelian_details';
+
+    public function getTransaksiPembelian()
+    {
+        return $this->belongsTo('App\TransaksiPembelian');
+    }
+
+    public function getMasterBahans(){
+        return $this->hasOne("App\MasterBahan","id", "master_bahan_id")->first();
+    }
 }
