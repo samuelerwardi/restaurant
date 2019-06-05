@@ -11,7 +11,7 @@ class MasterBahanRepository implements RepositoryInterface
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
-        return MasterBahan::all();
+        return MasterBahan::allSearch(app('request'));
 
     }
 

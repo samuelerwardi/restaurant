@@ -104,7 +104,7 @@
                                 </div>
                             </th>
                             <td colspan="2">
-                                <input type="text" required="" min="0" name="pph" id="pph" class="form-control" autocomplete="off" value="">
+                                <input type="text" required="" min="0" name="ppn" id="ppn" class="form-control" autocomplete="off" value="">
                             </td>
                         </tr>
                         <tr>
@@ -113,7 +113,7 @@
                                     Harga setelah PPN
                                 </div>
                             </th>
-                            <td colspan="2" id="afterpph">0</td>
+                            <td colspan="2" id="afterppn">0</td>
                         </tr>
                         </tfoot>
                     </table>

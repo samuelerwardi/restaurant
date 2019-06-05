@@ -31,8 +31,17 @@ class MasterBahan extends Model
 
     public function getMasterBahanStok()
     {
-        $query = $this->hasMany("App\MasterBahanStok","id","master_bahans_id");
+        $query = $this->hasMany("App\MasterBahanStok", "id", "master_bahans_id");
 
+        return $query->get();
+    }
+
+    public function scopeAllSearch($query, $request)
+    {
+        if (is_null($request)) return $query;
+        if (!empty($request->get("term"))) {
+            $query->where("kode_bahan", 'like', '%' . $request->get("term") . '%')->orWhere("nama_bahan", 'like', '%' . $request->get("term") . '%');
+        }
         return $query->get();
     }
 }

@@ -30,12 +30,13 @@ $(function(){
       }
     });
 
-    $("#pph").keyup(function(){
+    $("#ppn").keyup(function(){
+      console.log($(this));
       var grandtotal = parseInt($("[name=grandtotal]").val());
-      var pph = parseInt($("#pph").val());
-      pph=isNaN(pph)?0:pph;
-      var afterpph = grandtotal +(grandtotal * pph/100);
-      $("#afterpph").html('<input type="hidden" name="afterpph" value="'+afterpph+'">'+afterpph);
+      var ppn = parseInt($("#ppn").val());
+      ppn=isNaN(ppn)?0:ppn;
+      var afterppn = grandtotal +(grandtotal * ppn/100);
+      $("#afterppn").html('<input type="hidden" name="afterppn" value="'+afterppn+'">'+afterppn);
      });
 
     $("#kodebarang").autocomplete({
@@ -167,10 +168,10 @@ $(function(){
       $("#kodebarang").focus();
     }
       var grandtotal = parseInt($("[name=grandtotal]").val());
-      var pph = parseInt($("#pph").val());
-      pph=isNaN(pph)?0:pph;
-      var afterpph = grandtotal +(grandtotal * pph/100);
-      $("#afterpph").html('<input type="hidden" name="afterpph" value="'+afterpph+'">'+afterpph);
+      var ppn = parseInt($("#ppn").val());
+      ppn=isNaN(ppn)?0:ppn;
+      var afterppn = grandtotal +(grandtotal * ppn/100);
+      $("#afterppn").html('<input type="hidden" name="afterppn" value="'+afterppn+'">'+afterppn);
       return false;
     }
 

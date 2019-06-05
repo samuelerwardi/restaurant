@@ -16,6 +16,8 @@ class TransaksiPembelian extends Model
     protected $fillable = [
         'supplier_id',
         'total',
+        'ppn',
+        'grand_total',
         'created_at',
         'updated_at'
     ];
@@ -32,5 +34,20 @@ class TransaksiPembelian extends Model
     public function getTransaksiPembelianDetails(){
         $query = $this->hasMany("App\TransaksiPembelianDetails","transaksi_pembelian_id","id");
         return $query->get();
+    }
+
+    public function scopeFilterCreateAtFrom($query, $date)
+    {
+
+        if (is_null($date)) return $query;
+
+        return $query->where('created_at', '>=', $date);
+    }
+
+    public function scopeFilterCreateAtTo($query, $date)
+    {
+        if (is_null($date)) return $query;
+
+        return $query->where('created_at', '<=', $date." 23:59:59");
     }
 }

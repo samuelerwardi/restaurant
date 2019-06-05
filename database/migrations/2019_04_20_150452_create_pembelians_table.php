@@ -17,6 +17,8 @@ class CreatePembeliansTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger("supplier_id");
             $table->decimal('total',11,2);
+            $table->decimal('ppn',11,2);
+            $table->decimal('grand_total',11,2);
             $table->timestamps();
             $table->softDeletes();
         });

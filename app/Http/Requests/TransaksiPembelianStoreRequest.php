@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Route;
 
 class TransaksiPembelianStoreRequest extends FormRequest
 {
@@ -43,6 +44,7 @@ class TransaksiPembelianStoreRequest extends FormRequest
         $return["transaksi_pembelian"] = [
             "supplier_id" => $data["supplier_id"],
             "total" => 0,
+            "ppn" => $data["ppn"],
             "created_at" => Carbon::now()
 
         ];
@@ -55,8 +57,16 @@ class TransaksiPembelianStoreRequest extends FormRequest
                 "subtotal" => $data["harga"][$key] * $data["qty"][$key],
                 "created_at" => Carbon::now()
             ];
+            $return["master_bahans_stok"][$key] = [
+                "master_bahans_id" => $value,
+                "qty" => $data["qty"][$key],
+                "class" => Route::currentRouteName(),
+                "created_at" => Carbon::now()
+            ];
         }
-        $return["transaksi_pembelian"]["total"] = array_sum(array_column($return["transaksi_pembelian_details"],"subtotal"));
+        $total = array_sum(array_column($return["transaksi_pembelian_details"],"subtotal"));
+        $return["transaksi_pembelian"]["total"] = $total;
+        $return["transaksi_pembelian"]["grand_total"] = $total + ($total * $data["ppn"] / 100);
         return $return;
     }
 }

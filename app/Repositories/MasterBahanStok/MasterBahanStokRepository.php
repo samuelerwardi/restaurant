@@ -24,6 +24,8 @@ class MasterBahanStokRepository implements RepositoryInterface
     public function create(array $data): Model
     {
         // TODO: Implement create() method.
+        $result = MasterBahanStok::create($data);
+        return $result;
     }
 
     public function update(array $data, int $id)

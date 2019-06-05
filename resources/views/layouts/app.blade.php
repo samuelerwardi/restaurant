@@ -9,6 +9,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') - {{ Session::get('business.name') }}</title>
     @include('layouts.partials.css')
+    <style type="text/css">
+        .ui-menu .ui-menu-item-wrapper {
+            position: absolute;
+            padding: 3px 1em 3px .4em;
+            width: 100%;
+        }
+    </style>
     @yield('css')
 </head>
     <body class="hold-transition skin-blue sidebar-mini">

@@ -4,6 +4,7 @@
 namespace App\Repositories\TransaksiPembelian;
 
 
+use App\Repositories\MasterBahanStok\MasterBahanStokRepository;
 use App\Repositories\RepositoryInterface;
 use App\Repositories\TransaksiPembelianDetails\TransaksiPembelianDetailsRepository;
 use App\TransaksiPembelian;
@@ -14,15 +15,21 @@ class TransaksiPembelianRepository implements RepositoryInterface
 
 //    /* @var $transaksiPembelianDetails \App\Repositories\TransaksiPembelian\TransaksiPembelianDetailsRepository */
     public $transaksiPembelianDetailsRepository;
-
-    public function __construct(TransaksiPembelianDetailsRepository $transaksiPembelianDetailsRepository)
+    public $masterBahanStokRepository;
+    public function __construct(TransaksiPembelianDetailsRepository $transaksiPembelianDetailsRepository, MasterBahanStokRepository $masterBahanStokRepository)
     {
         $this->transaksiPembelianDetailsRepository = $transaksiPembelianDetailsRepository;
+        $this->masterBahanStokRepository= $masterBahanStokRepository;
     }
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
-        return TransaksiPembelian::all();
+        $from = app('request')->get('from');
+        $to = app('request')->get('from');
+        $limit = app('request')->get('limit');
+        $page = app('request')->get('page');
+        $result = TransaksiPembelian::filterCreateAtFrom($from)->filterCreateAtTo($to);
+        return $result->get();
     }
 
     public function paginate(int $perPage = 15, $columns = ['*'])
@@ -39,6 +46,7 @@ class TransaksiPembelianRepository implements RepositoryInterface
             foreach ($data["transaksi_pembelian_details"] as $key => $value) {
                 $details = array_merge($value, array("transaksi_pembelian_id" => $result->getAttribute("id")));
                 $resultDetail = $this->transaksiPembelianDetailsRepository->create($details);
+                $this->masterBahanStokRepository->create($data["master_bahans_stok"][$key]);
             }
         }
         return $result;
