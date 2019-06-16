@@ -50,8 +50,9 @@ class TransaksiPembelianController extends Controller
      */
     public function store(TransaksiPembelianStoreRequest $request)
     {
-        $this->repo->create($request->all());
-        return redirect()->back()->with("message", "Success Saved");
+        $this->data = $this->repo->create($request->all());
+        return view('transaksi_pembelian.print',['data' => $this->data]);
+        // return redirect()->back()->with("message", "Success Saved");
     }
 
     /**
@@ -63,6 +64,8 @@ class TransaksiPembelianController extends Controller
     public function show($id)
     {
         //
+        $this->data = $this->repo->find($id);
+        return view('transaksi_pembelian.print',['data' => $this->data]);
     }
 
     /**

@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+<iframe name="iframe" style="display:none"></iframe>
 <section class="content">
     <div class="box box-info">
         <div class="box-header with-border">
@@ -13,8 +14,7 @@
         </div><!-- /.box-header -->
         <!-- form start -->
         <div class="row">
-            <form class="form-horizontal" method="post" action="transaksi_pembelian/insertTransaction" id="form" target="iframecetakpo">
-                <input type="hidden" value="" name="trxid">
+            <form class="form-horizontal" method="post" action="{{action('TransaksiPenjualanController@store')}}" target="iframe">
                 <div class="col-md-12" style="margin-bottom:50px">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -101,7 +101,7 @@
                                 </div>
                             </th>
                             <td colspan="2">
-                                <input type="text" required="" min="0" name="pph" id="pph" class="form-control" autocomplete="off" value="">
+                                <input type="text" required="" min="0" name="ppn" id="ppn" class="form-control" autocomplete="off" value="">
                             </td>
                         </tr>
                         <tr>
@@ -110,7 +110,7 @@
                                     Harga setelah PPN
                                 </div>
                             </th>
-                            <td colspan="2" id="afterpph">0</td>
+                            <td colspan="2" id="afterppn">0</td>
                         </tr>
                         </tfoot>
                     </table>

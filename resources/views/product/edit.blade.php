@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-sm-2">
                                 <button type="button" class="btn btn-default btn-remove-row">
-                                    <i class="fa fa-plus">Remove</i>
+                                    <i class="fa fa-trash">Remove</i>
                                 </button>
                             </div>
                         </div>

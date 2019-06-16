@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+<iframe name="iframe" style="display:none"></iframe>
 <section class="content">
     <div class="box box-info">
         <div class="box-header with-border">
@@ -13,7 +14,7 @@
         </div><!-- /.box-header -->
         <!-- form start -->
         <div class="row">
-            <form class="form-horizontal" method="post" action="{{action("TransaksiPembelianController@store")}}" id="form">
+            <form class="form-horizontal" method="post" action="{{action("TransaksiPembelianController@store")}}" id="form" target="iframe">
                 <div class="col-md-12" style="margin-bottom:50px">
                     <div class="col-md-6">
                         <div class="form-group">

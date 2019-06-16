@@ -142,14 +142,8 @@
                         <i class="fa fa-money"></i>Penjualan</a>
                     </li>
                     <li class="">
-                        <a href="http://dev.ultimate-pos.localhost/reports/stock-report">
-                            <i class="fa fa-hourglass-half" aria-hidden="true"></i>Stock Report
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="http://dev.ultimate-pos.localhost/reports/lot-report">
-                            <i class="fa fa-hourglass-half" aria-hidden="true"></i>Lot Report
+                        <a href="{{action('ReportController@master_bahans_stok')}}">
+                            <i class="fa fa-hourglass-half" aria-hidden="true"></i>Stok Master Bahan
                         </a>
                     </li>
                 </ul>

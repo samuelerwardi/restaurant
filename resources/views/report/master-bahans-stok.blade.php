@@ -9,7 +9,7 @@
     <section class="content">
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Report Pembelian</h3>
+                <h3 class="box-title">Report Stok Master Bahan</h3>
                 <div class="block-content collapse in">
                     <div class="span12">
                         <div class="table-toolbar">
@@ -49,12 +49,11 @@
                     <table id="example1" class="table table-bordered table-striped datatable datatable-client">
                         <thead>
                         <tr>
-                            <th width="10%">Order ID</th>
-                            <th width="18%">Timestamp</th>
-                            <th>Supplier</th>
-                            <th> Total Items</th>
-                            <th> Total Transaksi</th>
-                            <th>Action</th>
+                            <th>Kode Bahan</th>
+                            <th>Nama Bahan</th>
+                            <th>Satuan</th>
+                            <th>Qty</th>
+                            <th width="10%">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,14 +61,13 @@
                         <?php foreach ($datas as $key => $value) {
                         ?>
                         <tr class="odd gradeX">
-                            <td><?php echo $value['id'] ?></td>
-                            <td><?php echo $value['created_at'] ?></td>
-                            <td><?php echo $value->getSupplier()->nama ?></td>
-                            <td><?php echo $value->getTransaksiPembelianDetails()->count() ?></td>
-                            <td><?php echo $value['total'] ?></td>
+                            <td><?php echo $value->getMasterBahan()->kode_bahan; ?></td>
+                            <td><?php echo $value->getMasterBahan()->nama_bahan ?></td>
+                            <td><?php echo $value->getMasterBahan()->satuan ?></td>
+                            <td><?php echo $value['qty'] . $value['id'] ?></td>
                             <td>
-                                <a class="btn btn-mini report-transaksi-pembelian" data-id="{{$value['id']}}">
-                                    <i class="fa fa-eye"></i> View
+                                <a class="btn btn-mini report-transaksi-pembelian" href="{{action('ReportController@master_bahans_stok_detail',['id' => $value['master_bahans_id']])}}">
+                                    <i class="fa fa-eye"></i>History
                                 </a>
                             </td>
                         </tr>

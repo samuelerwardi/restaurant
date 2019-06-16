@@ -17,7 +17,7 @@ class MasterProdukReseps extends Model
         'created_at',
         'updated_at'
     ];
-
+    /* no usage, please remove this function */
     public function MasterProduk()
     {
         return $this->belongsTo('App\MasterProduk');

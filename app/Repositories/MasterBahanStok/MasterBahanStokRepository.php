@@ -14,6 +14,12 @@ class MasterBahanStokRepository implements RepositoryInterface
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
+        $from = app('request')->get('from');
+        $to = app('request')->get('from');
+        $limit = app('request')->get('limit');
+        $page = app('request')->get('page');
+        $result = MasterBahanStok::filterCreateAtFrom($from)->filterCreateAtTo($to);
+        return $result->get();
     }
 
     public function paginate(int $perPage = 15, $columns = ['*'])
@@ -58,7 +64,12 @@ class MasterBahanStokRepository implements RepositoryInterface
     {
         // TODO: Implement findBy() method.
         try {
-            $results = \App\MasterBahanStok::where($field, $value)->get();
+            $from = app('request')->get('from');
+            $to = app('request')->get('from');
+            $limit = app('request')->get('limit');
+            $page = app('request')->get('page');
+            $result = MasterBahanStok::where($field, $value)->filterCreateAtFrom($from)->filterCreateAtTo($to);
+            return $result->get();
         }
         catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             throw new \App\Exceptions\ModelNotFoundException;
@@ -69,5 +80,9 @@ class MasterBahanStokRepository implements RepositoryInterface
     public function sumQtyByMasterBahansId($master_bahans_id){
         $results = MasterBahanStok::SumQtyByMasterBahansId($master_bahans_id);
         return $results->first();
+    }
+
+    public function sumQtyAll($request){
+        return MasterBahanStok::SumQtyAll($request)->get();
     }
 }

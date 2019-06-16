@@ -4,11 +4,25 @@
 namespace App\Repositories\TransaksiPenjualan;
 
 
+use App\Repositories\MasterBahanStok\MasterBahanStokRepository;
+use App\Repositories\MasterProdukReseps\MasterProdukReseps;
 use App\Repositories\RepositoryInterface;
+use App\Repositories\TransaksiPenjualanDetails\TransaksiPenjualanDetailsRepository;
+use App\TransaksiPenjualan;
+use App\TransaksiPenjualanDetails;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Route;
 
 class TransaksiPenjualanRepository implements RepositoryInterface
 {
+    public function __construct(TransaksiPenjualanDetailsRepository $transaksiPenjualanDetailsRepository, MasterProdukReseps $masterProdukReseps, MasterBahanStokRepository $masterBahanStokRepository)
+    {
+        $this->transaksiPenjualanDetailsRepository = $transaksiPenjualanDetailsRepository;
+        $this->masterProdukReseps = $masterProdukReseps;
+        $this->masterBahanStokRepository = $masterBahanStokRepository;
+    }
+
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
@@ -22,6 +36,24 @@ class TransaksiPenjualanRepository implements RepositoryInterface
     public function create(array $data): Model
     {
         // TODO: Implement create() method.
+        $result = TransaksiPenjualan::create($data["transaksi"]);
+        if ($result instanceof TransaksiPenjualan){
+            foreach ($data["transaksi_details"] as $key => $value) {
+                $details = array_merge($value, array("transaksi_penjualan_id" => $result->getAttribute("id")));
+                $resultDetail = $this->transaksiPenjualanDetailsRepository->create($details);
+                $repoResep = $this->masterProdukReseps->findBy("master_produk_id",$value["master_produks_id"]);
+                if (!empty($repoResep)){
+                    foreach ($repoResep as $keyResep => $valueResep){
+                        $master_bahans_stok["master_bahans_id"] = $valueResep->getAttribute("master_bahan_id");
+                        $master_bahans_stok["qty"] = "-".$valueResep->getAttribute("qty");
+                        $master_bahans_stok["created_at"] = Carbon::now();
+                        $master_bahans_stok["class"] = Route::currentRouteName();
+                        $result_stok = $this->masterBahanStokRepository->create($master_bahans_stok);
+                    }
+                }
+            }
+        }
+        return $result;
     }
 
     public function update(array $data, int $id)

@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function(){
 		Route::get('transaksi_penjualan/{id?}', 'ReportController@transaksi_penjualan_view_detail');
 	    Route::get('transaksi_pembelian','ReportController@transaksi_pembelian');
 		Route::get('transaksi_pembelian/{id?}', 'ReportController@transaksi_pembelian_view_detail');
+		Route::get('master_bahans_stok', 'ReportController@master_bahans_stok');
+		Route::get('master_bahans_stok/{id}', 'ReportController@master_bahans_stok_detail');
 	});
 
 	Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TransaksiPenjualanStoreRequest;
-use App\Repositories\RepositoryInterface;
-use App\Repositories\TransaksiPenjualan\TransaksiPenjualanRepository;
+use App\TransaksiKeluar;
 use Illuminate\Http\Request;
-use League\Fractal\Manager;
 
-class TransaksiPenjualanController extends Controller
+class TransaksiKeluarController extends Controller
 {
-    /* @var $repo TransaksiPenjualanRepository **/
-    public function __construct(TransaksiPenjualanRepository $repo, Manager $fractal, Request $request)
-    {
-        parent::__construct($repo, $fractal, $request);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +15,6 @@ class TransaksiPenjualanController extends Controller
     public function index()
     {
         //
-        return view('transaksi_penjualan.index');
     }
 
     /**
@@ -35,7 +25,6 @@ class TransaksiPenjualanController extends Controller
     public function create()
     {
         //
-        echo "aaaa";die;
     }
 
     /**
@@ -44,23 +33,18 @@ class TransaksiPenjualanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TransaksiPenjualanStoreRequest $request)
+    public function store(Request $request)
     {
-        $this->data = $this->repo->create($request->all());
-//        dump($this->data);
-//        die;
-        return view('transaksi_penjualan.print',['data' => $this->data]);
-        die;
-        return redirect()->back()->with("message", "Success Saved");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TransaksiKeluar  $transaksiKeluar
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TransaksiKeluar $transaksiKeluar)
     {
         //
     }
@@ -68,10 +52,10 @@ class TransaksiPenjualanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TransaksiKeluar  $transaksiKeluar
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TransaksiKeluar $transaksiKeluar)
     {
         //
     }
@@ -80,10 +64,10 @@ class TransaksiPenjualanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\TransaksiKeluar  $transaksiKeluar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TransaksiKeluar $transaksiKeluar)
     {
         //
     }
@@ -91,10 +75,10 @@ class TransaksiPenjualanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\TransaksiKeluar  $transaksiKeluar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TransaksiKeluar $transaksiKeluar)
     {
         //
     }

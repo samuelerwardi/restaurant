@@ -5,36 +5,36 @@ $(function(){
   //     $(this).datepicker("hide");
   // });
   // $(".datepicker").keydown(function(){return false;});
-  var afterpph = 0
+  var afterppn = 0
   const errorMessageQty = "Stok Habis";
   $(".remove").on("click",function(){
     $(this).parents("tr").remove();
     countGrandtotal();
-    $("#pph").keyup();
+    $("#ppn").keyup();
     return false;
   });
   // $.showHideMenu();
-  $("#pph").keyup(function(){
+  $("#ppn").keyup(function(){
       var grandtotal = parseInt($("[name=grandtotal]").val());
-      var pph = parseInt($("#pph").val());
-      if (!isNaN(pph)) {
-      afterpph = grandtotal +(grandtotal * pph/100);
+      var ppn = parseInt($("#ppn").val());
+      if (!isNaN(ppn)) {
+      afterppn = grandtotal +(grandtotal * ppn/100);
       }
       else
       {
-        pph = 0;
-        afterpph = grandtotal;
+        ppn = 0;
+        afterppn = grandtotal;
       }
-      $("#afterpph").html('<input type="hidden" name="afterpph" value="'+afterpph+'">'+afterpph);
-      $("#cash").val(afterpph);
+      $("#afterppn").html('<input type="hidden" name="afterppn" value="'+afterppn+'">'+afterppn);
+      $("#cash").val(afterppn);
       if (($("#combocustomer").val()!="newCustomer") || ($("#combocustomer").val()!="")){
             $("#cash").keyup(function(){
-              console.log(grandtotal+"--"+pph);
-              var afterpph = grandtotal +(grandtotal * pph/100);
-              console.log("err : "+afterpph);
-              $("#kredit").val(afterpph-$("#cash").val());
+              console.log(grandtotal+"--"+ppn);
+              var afterppn = grandtotal +(grandtotal * ppn/100);
+              console.log("err : "+afterppn);
+              $("#kredit").val(afterppn-$("#cash").val());
           });
-          // console.log($("[name=afterpph]").val());
+          // console.log($("[name=afterppn]").val());
         }
       else{
           $("#kredit").val('0');
@@ -57,7 +57,7 @@ $(function(){
         parent.find("td:nth-child(5)").html('<input type="hidden" name="subtotal[]" value="'+subtotal+'">'+subtotal );
 
         countGrandtotal();
-        // pph();
+        // ppn();
     });
 
   $("#cabang").change(function(){
@@ -155,7 +155,7 @@ $(function(){
       }else{
         $("#grandtotal").html('<input type="hidden" name="grandtotal" value="0">0');
       }
-      $('#pph').keyup();
+      $('#ppn').keyup();
       $('#cash').keyup();
     }
     isEnough = false;
@@ -228,11 +228,11 @@ $(function(){
       $("#qty").val("");
       $("#subtotal").html("0");
       $("#kodebarang").focus();
-      console.log("PPH : "+afterpph);
-      if (afterpph=='' || afterpph==0) {
-        afterpph = $("[name=grandtotal]").val();
+      console.log("PPn : "+afterppn);
+      if (afterppn=='' || afterppn==0) {
+        afterppn = $("[name=grandtotal]").val();
       };
-      $("#afterpph").html('<input type="hidden" name="afterpph" value="'+afterpph+'">'+afterpph);
+      $("#afterppn").html('<input type="hidden" name="afterppn" value="'+afterppn+'">'+afterppn);
     }
 
 
@@ -321,7 +321,7 @@ $(function(){
         $("#nopenjualan").val() != "" &&
         $("#tanggalpenjualan").val() != "" &&
         $("#kodepelanggan").val() != "" &&
-        $("#afterpph")!=sumTotal &&
+        $("#afterppn")!=sumTotal &&
         $("#detail .empty-detail").length == 0){
         // alert(sumTotal);
         $.ajax({

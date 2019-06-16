@@ -72,99 +72,51 @@
                     <div class="table-responsive">
                         <table class="table bg-gray">
                             <tbody>
-                            <tr class="bg-green">
-                                <th>#</th>
-                                <th>Date</th>
-                                <th>Reference No</th>
-                                <th>Amount</th>
-                                <th>Payment mode</th>
-                                <th>Payment note</th>
-                            </tr>
                             <tr>
-                                <td>1</td>
-                                <td>04/23/2019</td>
-                                <td>SP2019/0004</td>
-                                <td><span class="display_currency" data-currency_symbol="true">Rp 20,000.00</span>
-                                </td>
+                                <th>Total Items:</th>
+                                <td></td>
                                 <td>
-                                    Cash
-                                </td>
-                                <td> --
+                                    <span class="display_currency pull-right" data-currency_symbol="true">
+                                        <?php echo $datas->getTransaksiPembelianDetails()->count(); ?>   
+                                    </span>
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <div class="table-responsive">
-                        <table class="table bg-gray">
-                            <tbody>
                             <tr>
                                 <th>Total:</th>
                                 <td></td>
-                                <td><span class="display_currency pull-right" data-currency_symbol="true">Rp 20,000.00</span>
+                                <td>
+                                    <span class="display_currency pull-right" data-currency_symbol="true">
+                                        Rp <?php echo $datas->total ?>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Discount:</th>
-                                <td><b>(-)</b></td>
-                                <td><span class="pull-right">0  % </span></td>
-                            </tr>
-                            <tr>
-                                <th>Order Tax:</th>
+                                <th>PPN</th>
                                 <td><b>(+)</b></td>
                                 <td class="text-right">
-                                    0.00
+                                    <?php echo $datas->ppn ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Shipping:</th>
-                                <td><b>(+)</b></td>
-                                <td><span class="display_currency pull-right"
-                                          data-currency_symbol="true">Rp 0.00</span></td>
-                            </tr>
-                            <tr>
-                                <th>Total Payable:</th>
+                                <th>Grand Total:</th>
                                 <td></td>
-                                <td><span class="display_currency pull-right">20,000.00</span></td>
-                            </tr>
-                            <tr>
-                                <th>Total paid:</th>
-                                <td></td>
-                                <td><span class="display_currency pull-right" data-currency_symbol="true">Rp 20,000.00</span>
+                                <td>
+                                    <span class="display_currency pull-right">
+                                        <?php echo $datas->grand_total ?>
+                                    </span>
                                 </td>
-                            </tr>
-                            <tr>
-                                <th>Total remaining:</th>
-                                <td></td>
-                                <td><span class="display_currency pull-right"
-                                          data-currency_symbol="true">Rp 0.00</span></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <strong>Sell note:</strong><br>
-                    <p class="well well-sm no-shadow bg-gray">
-                        --
-                    </p>
-                </div>
-                <div class="col-sm-6">
-                    <strong>Staff note:</strong><br>
-                    <p class="well well-sm no-shadow bg-gray">
-                        --
-                    </p>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
             <a href="#" class="print-invoice btn btn-primary"
-               data-href="http://dev.ultimate-pos.localhost/sells/6/print"><i class="fa fa-print"
-                                                                              aria-hidden="true"></i> Print</a>
+               data-href="http://dev.ultimate-pos.localhost/sells/6/print">
+               <i class="fa fa-print" aria-hidden="true"></i> Print
+            </a>
             <button type="button" class="btn btn-default no-print" data-dismiss="modal">Close</button>
         </div>
     </div>
