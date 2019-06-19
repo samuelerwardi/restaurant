@@ -104,25 +104,13 @@
                             <i class="fa fa-plus-circle"></i>Penjualan
                         </a>
                     </li>
+                    <li class="">
+                        <a href="{{action('TransaksiKeluarController@index')}}">
+                            <i class="fa fa-plus-circle"></i>Keluar
+                        </a>
+                    </li>
                 </ul>
             </li>
-
-            <li class="treeview ">
-                <a href="#"><i class="fa fa-minus-circle"></i> <span>Expenses</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class=""><a href="http://dev.ultimate-pos.localhost/expenses"><i class="fa fa-list"></i>List
-                            Expenses</a></li>
-                    <li class=""><a href="http://dev.ultimate-pos.localhost/expenses/create"><i
-                                    class="fa fa-plus-circle"></i>Add Expenses</a></li>
-                    <li class=""><a href="http://dev.ultimate-pos.localhost/expense-categories"><i
-                                    class="fa fa-circle-o"></i>Expense Categories</a></li>
-                </ul>
-            </li>
-
 
             <li class="treeview " id="tour_step8">
                 <a href="#" id="tour_step8_menu">
@@ -135,11 +123,15 @@
                 <ul class="treeview-menu">
                     <li class="">
                         <a href="{{action('ReportController@transaksi_pembelian')}}">
-                        <i class="fa fa-money"></i>Pembelian</a>
+                        <i class="fa fa-money"></i>Transaksi Pembelian</a>
                     </li>
                     <li class="">
                         <a href="{{action('ReportController@transaksi_penjualan')}}">
-                        <i class="fa fa-money"></i>Penjualan</a>
+                        <i class="fa fa-money"></i>Transaksi Penjualan</a>
+                    </li>
+                    <li class="">
+                        <a href="{{action('ReportController@transaksi_keluar')}}">
+                        <i class="fa fa-money"></i>Transaksi Keluar</a>
                     </li>
                     <li class="">
                         <a href="{{action('ReportController@master_bahans_stok')}}">

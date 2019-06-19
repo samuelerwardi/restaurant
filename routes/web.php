@@ -31,15 +31,18 @@ Route::middleware('auth')->group(function(){
 	Route::post('product/validate_stok','ProductController@validate_stok');
 	Route::get('product/search','ProductController@search');
 	Route::resource('product', 'ProductController');
-	/* Transaksi */	
+	/* Transaksi */
 	Route::resource('transaksi_pembelian', 'TransaksiPembelianController');
 	Route::resource('transaksi_penjualan', 'TransaksiPenjualanController');
+	Route::resource('transaksi_keluar', 'TransaksiKeluarController');
 	/* Report */
 	Route::prefix('report')->group(function () {
 	    Route::get('transaksi_penjualan','ReportController@transaksi_penjualan');
 		Route::get('transaksi_penjualan/{id?}', 'ReportController@transaksi_penjualan_view_detail');
 	    Route::get('transaksi_pembelian','ReportController@transaksi_pembelian');
 		Route::get('transaksi_pembelian/{id?}', 'ReportController@transaksi_pembelian_view_detail');
+	    Route::get('transaksi_keluar','ReportController@transaksi_keluar');
+		Route::get('transaksi_keluar/{id?}', 'ReportController@transaksi_keluar_view_detail');
 		Route::get('master_bahans_stok', 'ReportController@master_bahans_stok');
 		Route::get('master_bahans_stok/{id}', 'ReportController@master_bahans_stok_detail');
 	});

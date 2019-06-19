@@ -1,26 +1,24 @@
 <?php
 
 
-namespace App\Repositories\TransaksiPembelian;
+namespace App\Repositories\TransaksiKeluar;
 
 
 use App\Repositories\MasterBahanStok\MasterBahanStokRepository;
 use App\Repositories\RepositoryInterface;
 use App\Repositories\TransaksiPembelianDetails\TransaksiPembelianDetailsRepository;
+use App\TransaksiKeluar;
 use App\TransaksiPembelian;
 use Illuminate\Database\Eloquent\Model;
 
 class TransaksiKeluarRepository implements RepositoryInterface
 {
 
-//    /* @var $transaksiPembelianDetails \App\Repositories\TransaksiPembelian\TransaksiPembelianDetailsRepository */
-    public $transaksiPembelianDetailsRepository;
-    public $masterBahanStokRepository;
-    public function __construct(TransaksiPembelianDetailsRepository $transaksiPembelianDetailsRepository, MasterBahanStokRepository $masterBahanStokRepository)
+    public function __construct()
     {
-        $this->transaksiPembelianDetailsRepository = $transaksiPembelianDetailsRepository;
-        $this->masterBahanStokRepository= $masterBahanStokRepository;
+
     }
+
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
@@ -28,8 +26,8 @@ class TransaksiKeluarRepository implements RepositoryInterface
         $to = app('request')->get('from');
         $limit = app('request')->get('limit');
         $page = app('request')->get('page');
-        $result = TransaksiPembelian::filterCreateAtFrom($from)->filterCreateAtTo($to);
-        return $result->get();
+        $result = TransaksiKeluar::filterCreateAtFrom($from)->filterCreateAtTo($to)->get();
+        return $result;
     }
 
     public function paginate(int $perPage = 15, $columns = ['*'])
@@ -40,15 +38,8 @@ class TransaksiKeluarRepository implements RepositoryInterface
     public function create(array $data): Model
     {
         // TODO: Implement create() method.
-        $result = TransaksiPembelian::create($data["transaksi_pembelian"]);
+        $result = TransaksiKeluar::create($data);
 
-        if ($result){
-            foreach ($data["transaksi_pembelian_details"] as $key => $value) {
-                $details = array_merge($value, array("transaksi_pembelian_id" => $result->getAttribute("id")));
-                $resultDetail = $this->transaksiPembelianDetailsRepository->create($details);
-                $this->masterBahanStokRepository->create($data["master_bahans_stok"][$key]);
-            }
-        }
         return $result;
     }
 
@@ -73,7 +64,7 @@ class TransaksiKeluarRepository implements RepositoryInterface
         // TODO: Implement find() method.
         // TODO: Implement find() method.
         try {
-            $result = TransaksiPembelian::findOrFail($id);
+            $result = TransaksiKeluar::findOrFail($id);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             throw new \App\Exceptions\ModelNotFoundException;
         }

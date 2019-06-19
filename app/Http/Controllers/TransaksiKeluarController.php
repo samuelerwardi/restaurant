@@ -2,11 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\TransaksiKeluar;
+use App\Http\Requests\TransaksiKeluarStore;
+use App\Repositories\RepositoryInterface;
+use App\Repositories\TransaksiKeluar\TransaksiKeluarRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use League\Fractal\Manager;
 
+/**
+ * Class TransaksiKeluarController
+ * @package App\Http\Controllers
+ */
 class TransaksiKeluarController extends Controller
 {
+    /**
+     * @var null
+     */
+    protected $data;
+
+    /**
+     * TransaksiKeluarController constructor.
+     * @param TransaksiKeluarRepository $repo
+     * @param Manager $fractal
+     * @param Request $request
+     */
+    public function __construct(TransaksiKeluarRepository $repo, Manager $fractal, Request $request)
+    {
+        parent::__construct($repo, $fractal, $request);
+        $this->data = null;
+        $this->repo = $repo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +41,8 @@ class TransaksiKeluarController extends Controller
     public function index()
     {
         //
+        $this->data = null;
+        return view('transaksi_keluar.index');
     }
 
     /**
@@ -33,9 +61,11 @@ class TransaksiKeluarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TransaksiKeluarStore $request)
     {
         //
+        $this->data = $this->repo->create($request->all());
+        return redirect()->back()->with("message", "Success Saved");
     }
 
     /**

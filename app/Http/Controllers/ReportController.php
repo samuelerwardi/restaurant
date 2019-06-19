@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\MasterBahanStok\MasterBahanStokRepository;
+use App\Repositories\TransaksiKeluar\TransaksiKeluarRepository;
 use App\Repositories\TransaksiPembelian\TransaksiPembelianRepository;
 use App\Repositories\TransaksiPenjualan\TransaksiPenjualanRepository;
 use Illuminate\Http\Request;
@@ -17,12 +18,15 @@ class ReportController extends Controller
     public $transaksiPenjualanRepository;
     /** @var $masterBahanStokRepository MasterBahanStokRepository */
     public $masterBahanStokRepository;
+    /** @var $transaksiKeluarRepository TransaksiKeluarRepository */
+    public $transaksiKeluarRepository;
 
-    public function __construct(TransaksiPembelianRepository $transaksiPembelianRepository, TransaksiPenjualanRepository $transaksiPenjualanRepository, MasterBahanStokRepository $masterBahanStokRepository ,Manager $fractal, Request $request)
+    public function __construct(TransaksiPembelianRepository $transaksiPembelianRepository, TransaksiPenjualanRepository $transaksiPenjualanRepository, MasterBahanStokRepository $masterBahanStokRepository, TransaksiKeluarRepository $transaksiKeluarRepository ,Manager $fractal, Request $request)
     {
         $this->transaksiPembelianRepository = $transaksiPembelianRepository;
         $this->transaksiPenjualanRepository = $transaksiPenjualanRepository;
         $this->masterBahanStokRepository = $masterBahanStokRepository;
+        $this->transaksiKeluarRepository = $transaksiKeluarRepository;
     }
     public function transaksi_pembelian(){
         $this->data = $this->transaksiPembelianRepository->all();
@@ -39,6 +43,14 @@ class ReportController extends Controller
     public function transkasi_penjualan_view_detail($id){
         $this->data = $this->transaksiPembelianRepository->find($id);
         return view("report.transaksi-pembelian-modal", ["datas" => $this->data]);
+    }
+    public function transaksi_keluar(){
+        $this->data = $this->transaksiKeluarRepository->all();
+        return view("report.transaksi_keluar",["datas" => $this->data]);
+    }
+    public function transaksi_keluar_view_detail($id){
+        $this->data = $this->transaksiPembelianRepository->find($id);
+        return view("report.transaksi-keluar-modal", ["datas" => $this->data]);
     }
     public function master_bahans_stok(Request $request){
         $this->data = $this->masterBahanStokRepository->sumQtyAll($request->all());
