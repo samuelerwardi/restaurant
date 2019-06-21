@@ -51,7 +51,6 @@
                         <tr>
                             <th width="10%">Order ID</th>
                             <th width="18%">Timestamp</th>
-                            <th>Supplier</th>
                             <th> Total Items</th>
                             <th> Total Transaksi</th>
                             <th>Action</th>
@@ -64,11 +63,10 @@
                         <tr class="odd gradeX">
                             <td><?php echo $value['id'] ?></td>
                             <td><?php echo $value['created_at'] ?></td>
-                            <td><?php echo $value->getSupplier()->nama ?></td>
-                            <td><?php echo $value->getTransaksiPembelianDetails()->count() ?></td>
+                            <td><?php echo $value->getDetails()->count() ?></td>
                             <td><?php echo $value['total'] ?></td>
                             <td>
-                                <a class="btn btn-mini report-transaksi-pembelian" data-id="{{$value['id']}}">
+                                <a class="btn btn-mini report-transaksi" data-id="{{$value['id']}}">
                                     <i class="fa fa-eye"></i> View
                                 </a>
                             </td>
@@ -85,20 +83,20 @@
     </section>
 
 
-    <div class="modal" id="modal-report-transaksi-pembelian-detail">
+    <div class="modal" id="modal-report-transaksi-detail">
 
     </div>
 @endsection
 @section('javascript')
 <script type="text/javascript">
-    $(".report-transaksi-pembelian").on("click", function(){
+    $(".report-transaksi").on("click", function(){
         var id = $(this).data('id');
         $.ajax({
-            url:"{{action('ReportController@transaksi_pembelian_view_detail')}}/"+id,
+            url:"{{action('ReportController@transaksi_penjualan_view_detail')}}/"+id,
             type:"GET",
             success:function(data){
-                $("#modal-report-transaksi-pembelian-detail").html(data);
-                $("#modal-report-transaksi-pembelian-detail").modal();
+                $("#modal-report-transaksi-detail").html(data);
+                $("#modal-report-transaksi-detail").modal();
             }
         });
     });

@@ -71,7 +71,6 @@ class TransaksiPembelianRepository implements RepositoryInterface
     public function find(int $id, $columns = array('*'))
     {
         // TODO: Implement find() method.
-        // TODO: Implement find() method.
         try {
             $result = TransaksiPembelian::findOrFail($id);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

@@ -1,106 +1,113 @@
-@extends('layouts.app')
-@section('title', __('home.home'))
-
-@section('css')
-    {!! Charts::styles(['highcharts']) !!}
-@endsection
-
-@section('content')
-    <section class="content">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Report Pembelian</h3>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                        <div class="table-toolbar">
-                        </div>
-                    </div>
-                </div>
-            </div><!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal" id="form3" action="" method="get">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">From</label>
-                        <div class="col-sm-3">
-                            <input type="text" name="from" class="form-control datepicker" autocomplete="off"
-                                   value="{{Request()->from}}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label" id="name">To</label>
-                        <div class="col-sm-3">
-                            <input type="text" name="to" class="form-control datepicker" autocomplete="off"
-                                   value="{{Request()->to}}">
-                        </div>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <div class="col-sm-offset-2 col-sm-5">
-                        <button type="submit" class="btn btn-info pull-left col-sm-4" id="click">Submit</button>
-                    </div>
-                </div>
-            </form>
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Data Table With Full Features</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped datatable">
-                        <thead>
-                        <tr>
-                            <th width="10%">Order ID</th>
-                            <th width="18%">Timestamp</th>
-                            <th>Supplier</th>
-                            <th> Total Items</th>
-                            <th> Total Transaksi</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php if (isset($datas)): ?>
-                        <?php foreach ($datas as $key => $value) {
-                        ?>
-                        <tr class="odd gradeX">
-                            <td><?php echo $value['id'] ?></td>
-                            <td><?php echo $value['created_at'] ?></td>
-                            <td><?php echo $value->getSupplier()->nama ?></td>
-                            <td><?php echo $value->getTransaksiPembelianDetails()->count() ?></td>
-                            <td><?php echo $value['total'] ?></td>
-                            <td>
-                                <a class="btn btn-mini report-transaksi-pembelian" data-id="{{$value['id']}}">
-                                    <i class="fa fa-eye"></i> View
-                                </a>
-                            </td>
-                        </tr>
-                        <?php  } ?>
-                        <?php endif ?>
-                        </tbody>
-                        <tfoot>
-                        </tfoot>
-                    </table>
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
+<div class="modal-dialog modal-xl no-print" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close no-print" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="modalTitle"> 
+                Sell Details (<b>Order No.:</b> {{$datas->id}})
+            </h4>
         </div>
-    </section>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="pull-right"><b>Date:</b> {{$datas->created_at}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <b>Order No.:</b> #{{$datas->id}}<br>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h4>Products:</h4>
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table bg-gray">
+                            <tbody>
+                            <tr class="bg-green">
+                                <th>#</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                            <?php foreach ($datas->getDetails() as $key => $value): ?>
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td>
+                                        {{$value->getMasterProduk()->produk_nama}}
+                                    </td>
+                                    <td>{{$value->qty}}</td>
+                                    <td>
+                                        <span class="display_currency" data-currency_symbol="true">Rp {{$value->price}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="display_currency" data-currency_symbol="true">Rp {{$value->subtotal}}</span>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-
-    <div class="modal" id="modal-report-transaksi-pembelian-detail">
-
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h4>Payment info:</h4>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table bg-gray">
+                            <tbody>
+                            <tr>
+                                <th>Total Items:</th>
+                                <td></td>
+                                <td>
+                                    <span class="display_currency pull-right" data-currency_symbol="true">
+                                        <?php echo $datas->getDetails()->count(); ?>   
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Total:</th>
+                                <td></td>
+                                <td>
+                                    <span class="display_currency pull-right" data-currency_symbol="true">
+                                        Rp <?php echo $datas->total ?>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>PPN</th>
+                                <td><b>(+)</b></td>
+                                <td class="text-right">
+                                    <?php echo $datas->ppn ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Grand Total:</th>
+                                <td></td>
+                                <td>
+                                    <span class="display_currency pull-right">
+                                        <?php echo $datas->grand_total ?>
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default no-print" data-dismiss="modal">Close</button>
+        </div>
     </div>
-@endsection
-@section('javascript')
-<script type="text/javascript">
-    $(".report-transaksi-pembelian").on("click", function(){
-        var id = $(this).data('id');
-        $.ajax({
-            url:"{{action('ReportController@transaksi_pembelian_view_detail')}}/"+id,
-            type:"GET",
-            success:function(data){
-                $("#modal-report-transaksi-pembelian-detail").html(data);
-                $("#modal-report-transaksi-pembelian-detail").modal();
-            }
-        });
-    });
-</script>
-@endsection
+</div>

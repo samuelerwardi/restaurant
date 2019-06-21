@@ -37,12 +37,12 @@ class ReportController extends Controller
         return view("report.transaksi-pembelian-modal", ["datas" => $this->data]);
     }
     public function transaksi_penjualan(){
-        $this->data = $this->transaksiPembelianRepository->all();
+        $this->data = $this->transaksiPenjualanRepository->all();
         return view("report.transaksi_penjualan",["datas" => $this->data]);
     }
-    public function transkasi_penjualan_view_detail($id){
-        $this->data = $this->transaksiPembelianRepository->find($id);
-        return view("report.transaksi-pembelian-modal", ["datas" => $this->data]);
+    public function transaksi_penjualan_view_detail($id){
+        $this->data = $this->transaksiPenjualanRepository->find($id);
+        return view("report.transaksi_penjualan-modal", ["datas" => $this->data]);
     }
     public function transaksi_keluar(){
         $this->data = $this->transaksiKeluarRepository->all();

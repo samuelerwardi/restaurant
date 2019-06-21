@@ -113,10 +113,6 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#" class="print-invoice btn btn-primary"
-               data-href="http://dev.ultimate-pos.localhost/sells/6/print">
-               <i class="fa fa-print" aria-hidden="true"></i> Print
-            </a>
             <button type="button" class="btn btn-default no-print" data-dismiss="modal">Close</button>
         </div>
     </div>

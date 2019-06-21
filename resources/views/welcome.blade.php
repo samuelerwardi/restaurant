@@ -81,7 +81,7 @@
                     @else
                         <a href="{{ action('Auth\LoginController@login') }}">@lang('lang_v1.login')</a>
                         @if(env('ALLOW_REGISTRATION', true))
-                            <a href="{{ route('business.getRegister') }}">@lang('lang_v1.register')</a>
+                            <a href="/register">@lang('lang_v1.register')</a>
                         @endif
                     @endif
                 @endif

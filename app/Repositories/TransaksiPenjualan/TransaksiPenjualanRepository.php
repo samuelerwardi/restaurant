@@ -26,6 +26,13 @@ class TransaksiPenjualanRepository implements RepositoryInterface
     public function all(array $columns = ['*'])
     {
         // TODO: Implement all() method.
+        //         // TODO: Implement all() method.
+        $from = app('request')->get('from');
+        $to = app('request')->get('from');
+        $limit = app('request')->get('limit');
+        $page = app('request')->get('page');
+        $result = TransaksiPenjualan::filterCreateAtFrom($from)->filterCreateAtTo($to);
+        return $result->get();
     }
 
     public function paginate(int $perPage = 15, $columns = ['*'])
@@ -74,6 +81,12 @@ class TransaksiPenjualanRepository implements RepositoryInterface
     public function find(int $id, $columns = array('*'))
     {
         // TODO: Implement find() method.
+        try {
+            $result = TransaksiPenjualan::findOrFail($id);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            throw new \App\Exceptions\ModelNotFoundException;
+        }
+        return $result;
     }
 
     public function findBy(string $field, string $value, $columns = ['*'])
