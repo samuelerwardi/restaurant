@@ -28,7 +28,7 @@ class TransaksiKeluar extends Model
     /**
      * @var string
      */
-    protected $table = 'transaksi_keluar';
+    protected $table = 'transaksi_keluars';
 
     public function scopeFilterCreateAtFrom($query, $date)
     {

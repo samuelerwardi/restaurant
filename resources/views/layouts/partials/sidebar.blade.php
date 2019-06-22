@@ -4,7 +4,7 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="active">
-                <a href="http://dev.ultimate-pos.localhost/home">
+                <a href="{{action('HomeController@index')}}">
                     <i class="fa fa-dashboard"></i> 
                     <span>Home</span>
                 </a>

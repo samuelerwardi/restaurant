@@ -15,6 +15,14 @@ class CreateTransaksiKeluarsTable extends Migration
     {
         Schema::create('transaksi_keluars', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('jenis_transaksi');
+            $table->string('ref_no');
+            $table->decimal('tanggal',11,2);
+            $table->decimal('nominal',11,2);
+            $table->string('keterangan');
+            $table->string('document');
+            $table->string('fullpath');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
