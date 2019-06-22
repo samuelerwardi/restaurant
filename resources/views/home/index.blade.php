@@ -10,7 +10,9 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Total Penjualan</span>
-                  <span class="info-box-number total_purchase">Rp 0.00</span>
+                  <span class="info-box-number total_purchase">
+                    Rp {{$datas["transaksi_penjualan"]->sum('grand_total')}}
+                  </span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -23,7 +25,9 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Total Pembelian</span>
-                  <span class="info-box-number total_sell">Rp 0.00</span>
+                  <span class="info-box-number total_sell">
+                    Rp {{$datas["transaksi_pembelian"]->sum('grand_total')}}
+                  </span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -39,7 +43,9 @@
 
                 <div class="info-box-content">
                   <span class="info-box-text">Total T.Keluar</span>
-                  <span class="info-box-number purchase_due">Rp 0.00</span>
+                  <span class="info-box-number purchase_due">
+                    Rp {{$datas["transaksi_keluar"]->sum('nominal')}}
+                  </span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
