@@ -12,23 +12,6 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
-                        <span class="title">User Management</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="">
-                        <a href="http://dev.ultimate-pos.localhost/users">
-                            <i class="fa fa-user"></i>
-                            <span class="title">Users</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i>
                         <span class="title">Suppliers</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
@@ -76,11 +59,6 @@
                     <li class="">
                         <a href="{{action('MasterBahanController@create')}}">
                             <i class="fa fa-plus-circle"></i>Add Master Bahan
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="http://dev.ultimate-pos.localhost/labels/show">
-                            <i class="fa fa-barcode"></i>Print Labels
                         </a>
                     </li>
                 </ul>

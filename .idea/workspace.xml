@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9934e34d-eb84-4d58-8c2c-55e729b71b42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TransaksiKeluar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TransaksiKeluar.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="474">
-              <caret line="39" column="60" lean-forward="true" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
+              <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
               <folding>
                 <element signature="e#40#103#0#PHP" expanded="true" />
               </folding>
@@ -32,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="204">
               <caret line="21" column="61" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="61" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
@@ -44,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="170">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#40#81#0#PHP" expanded="true" />
               </folding>
@@ -56,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MasterBahanController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="136">
               <caret line="15" column="95" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="95" />
               <folding>
                 <element signature="e#40#79#0#PHP" expanded="true" />
@@ -68,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/TransaksiKeluar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="493">
               <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
               <folding>
                 <element signature="e#23#62#0#PHP" expanded="true" />
@@ -79,15 +77,13 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/report/transaksi_penjualan.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1229" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/report/transaksi_penjualan-modal.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
+            <state relative-caret-position="629">
               <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
             </state>
           </provider>
@@ -95,9 +91,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/report/transaksi-pembelian-modal.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-612" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -287,7 +281,7 @@
       <path value="$PROJECT_DIR$/vendor/league/fractal" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-67" />
     <option name="y" value="131" />
     <option name="width" value="1382" />
@@ -481,17 +475,18 @@
       <workItem from="1560737184344" duration="3075000" />
       <workItem from="1560822615643" duration="6648000" />
       <workItem from="1561129842934" duration="1463000" />
+      <workItem from="1561342350860" duration="596000" />
+      <workItem from="1561435701224" duration="252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194310000" />
+    <option name="totallyTimeSpent" value="195158000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <frame x="-67" y="131" width="1382" height="754" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27987897" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28895614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -915,9 +910,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
+          <folding>
+            <element signature="e#40#103#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="204">
           <caret line="21" column="61" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="61" />
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
@@ -927,8 +932,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="170">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#40#81#0#PHP" expanded="true" />
           </folding>
@@ -937,7 +942,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MasterBahanController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="136">
           <caret line="15" column="95" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="95" />
           <folding>
             <element signature="e#40#79#0#PHP" expanded="true" />
@@ -947,7 +952,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/TransaksiKeluar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="493">
           <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
           <folding>
             <element signature="e#23#62#0#PHP" expanded="true" />
@@ -955,32 +960,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/report/transaksi_penjualan.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/report/transaksi_penjualan-modal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
+        <state relative-caret-position="629">
           <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/report/transaksi-pembelian-modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/report/transaksi_penjualan.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1229" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="39" column="60" lean-forward="true" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
-          <folding>
-            <element signature="e#40#103#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
