@@ -61,11 +61,8 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Bahan</label>
                     <div class="col-sm-4">
-                        <select name="kode_bahan[]" class="form-control kode_bahan"></select>
                     </div>
                     <div class="col-sm-4">
-                        <input name="qty[]" type="number" class="form-control" id="qty"
-                               placeholder="Qty" required autocomplete="off" value="">
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-default btn-add-row">

@@ -21,7 +21,7 @@
                             <th>Kode Bahan</th>
                             <th>Nama Bahan</th>
                             <th>Produk Resep</th>
-                            <th>Satuan</th>
+                            <th>Harga Jual</th>
                             <th>Created</th>
                             <th>Action</th>
                         </tr>
@@ -48,7 +48,7 @@
                                 <?php }
                                 ?>
                             </td>
-                            <td><?php echo $value['satuan'] ?></td>
+                            <td><?php echo $value['harga_jual'] ?></td>
                             <td><?php echo $value['created_at'] ?></td>
                             <td width="16%">
                                 <a href="{{action('ProductController@edit',$value['id'])}}" class="btn btn-default fa fa-edit btn-default btn_edit">
