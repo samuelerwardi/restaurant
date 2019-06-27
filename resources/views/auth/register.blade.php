@@ -66,6 +66,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <a href="{{action('Auth\LoginController@login')}}">Login</a>
                             </div>
                         </div>
                     </form>
