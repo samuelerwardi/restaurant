@@ -10,7 +10,7 @@
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">
-                    Form Master Barang
+                    Form Master Supplier
                 </h3>
                 <div class="block-content collapse in">
                     <div class="span12">

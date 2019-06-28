@@ -86,6 +86,8 @@ class MasterProdukRepository implements RepositoryInterface
     public function delete(int $id)
     {
         // TODO: Implement delete() method.
+        $result = MasterProduk::destroy($id);
+        return $result;
     }
 
     public function find(int $id, $columns = array('*'))

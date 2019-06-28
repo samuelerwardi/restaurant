@@ -26,6 +26,7 @@ class TransaksiPenjualanDetails extends Model
     ];
 
     public function getMasterProduk(){
-        return $this->hasOne("App\MasterProduk","id", "master_produks_id")->first();
+        $data = $this->hasOne("App\MasterProduk","id", "master_produks_id")->withTrashed()->first();
+        return $data;
     }
 }

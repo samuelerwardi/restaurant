@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">
                         Kode Barang
-                        {{ \App\Helpers\Helper::development() }}
+                        <?php //dump(\App\Helpers\Helper::development()); ?>
                     </label>
                     <div class="col-sm-5">
                         <input type="text" name="produk_kode" class="form-control primarykey" placeholder="Kode Barang"
@@ -37,15 +37,15 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Keuntungan</label>
                     <div class="col-sm-5">
-                        <input name="keuntungan" value="<?php echo $datas["keuntungan"] ?>" type="text" class="form-control keuntungan" id="nominal2"
-                               placeholder="Keuntungan IDR">
+                        <input type="text" class="form-control currency" placeholder="Keuntungan IDR" value="<?php echo $datas["keuntungan"] ?>" data-id="keuntungan">
+                        <input name="keuntungan" value="<?php echo $datas["keuntungan"] ?>" id="keuntungan" type="hidden">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Harga Jual</label>
                     <div class="col-sm-5">
-                        <input name="harga_jual" value="<?php echo $datas["harga_jual"] ?>" type="text" class="form-control" id="harga_jual"
-                               placeholder="Harga Jual">
+                        <input value="<?php echo $datas["harga_jual"] ?>" type="text" class="form-control currency" data-id="harga_jual" placeholder="Harga Jual">
+                       <input name="harga_jual" value="<?php echo $datas["harga_jual"] ?>" type="hidden" class="form-control" id="harga_jual">
                     </div>
                 </div>
                 <div class="form-group">
@@ -119,9 +119,12 @@
                   }
             });
         }
+        function setCurrency(argument) {
+            // $(".curr")
+        }
         $(document).ready(function() {
-            console.log("aa");
-            initKodeBahan();            
+            initKodeBahan();
+
         });
         var counter = 1;
         $(document).on("click", ".btn-add-row", function(){
@@ -145,6 +148,23 @@
 
         $(document).on("click",".btn-remove-row",function(){
             $(this).parent().parent().remove();
+        });
+        var options = {
+            symbol : "Rp ",
+            decimal : ",",
+            thousand: ".",
+            precision : 2,
+            format: "%s%v"
+        };
+
+        $(document).on('blur', '.currency', function(event) {
+            var appendOn = $(this).data("id");
+            var value = $(this).val();
+            var currency = accounting.formatMoney($(this).val(), options);
+            $(this).val(currency);
+            if (!isNaN(value)){
+                $("#"+appendOn).val(value);
+            };
         });
     </script>
 @endsection

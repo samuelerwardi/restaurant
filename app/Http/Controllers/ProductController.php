@@ -98,9 +98,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MasterProduk $product)
     {
         //
+        $this->repo->delete($product->getAttribute("id"));
+        return redirect()->back()->with("message", "Success Deleted");
     }
 
     public function search(Request $request){

@@ -28,7 +28,7 @@ class TransaksiPenjualanRepository implements RepositoryInterface
         // TODO: Implement all() method.
         //         // TODO: Implement all() method.
         $from = app('request')->get('from');
-        $to = app('request')->get('from');
+        $to = app('request')->get('to');
         $limit = app('request')->get('limit');
         $page = app('request')->get('page');
         $result = TransaksiPenjualan::filterCreateAtFrom($from)->filterCreateAtTo($to);

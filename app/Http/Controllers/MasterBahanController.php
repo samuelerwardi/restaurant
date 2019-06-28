@@ -103,7 +103,7 @@ class MasterBahanController extends Controller
     {
         //
         $this->repo->delete($masterBahan->getAttribute("id"));
-        die;
+        return redirect()->back()->with("message", "Success Deleted");
     }
 
     public function list(){
