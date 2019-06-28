@@ -27,7 +27,7 @@ class TransaksiPembelian extends Model
     protected $table = 'transaksi_pembelian';
 
     public function getSupplier(){
-        $query = $this->hasOne("App\Supplier","id","supplier_id");
+        $query = $this->hasOne("App\Supplier","id","supplier_id")->withTrashed();
         return $query->first();
     }
 

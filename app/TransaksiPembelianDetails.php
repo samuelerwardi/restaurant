@@ -34,6 +34,6 @@ class TransaksiPembelianDetails extends Model
     }
 
     public function getMasterBahans(){
-        return $this->hasOne("App\MasterBahan","id", "master_bahan_id")->first();
+        return $this->hasOne("App\MasterBahan","id", "master_bahan_id")->withTrashed()->first();
     }
 }

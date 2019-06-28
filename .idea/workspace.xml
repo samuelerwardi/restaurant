@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9934e34d-eb84-4d58-8c2c-55e729b71b42" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MasterBahanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MasterBahanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/MasterProduk/MasterProdukRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/MasterProduk/MasterProdukRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/TransaksiPenjualan/TransaksiPenjualanRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/TransaksiPenjualan/TransaksiPenjualanRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TransaksiPenjualanDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TransaksiPenjualanDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/javascripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/javascripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/report/transaksi_keluar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/report/transaksi_keluar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/report/transaksi_pembelian.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/report/transaksi_pembelian.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/report/transaksi_penjualan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/report/transaksi_penjualan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supplier/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supplier/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supplier/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supplier/edit.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="9934e34d-eb84-4d58-8c2c-55e729b71b42" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -531,12 +517,12 @@
       <workItem from="1561435701224" duration="252000" />
       <workItem from="1561516895067" duration="595000" />
       <workItem from="1561534154335" duration="592000" />
-      <workItem from="1561689856875" duration="3879000" />
+      <workItem from="1561689856875" duration="4478000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200224000" />
+    <option name="totallyTimeSpent" value="200823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
