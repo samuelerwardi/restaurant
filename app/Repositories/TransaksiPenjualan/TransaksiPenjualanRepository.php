@@ -52,7 +52,7 @@ class TransaksiPenjualanRepository implements RepositoryInterface
                 if (!empty($repoResep)){
                     foreach ($repoResep as $keyResep => $valueResep){
                         $master_bahans_stok["master_bahans_id"] = $valueResep->getAttribute("master_bahan_id");
-                        $master_bahans_stok["qty"] = "-".$valueResep->getAttribute("qty");
+                        $master_bahans_stok["qty"] = "-".($valueResep->getAttribute("qty")*$value["qty"]);
                         $master_bahans_stok["created_at"] = Carbon::now();
                         $master_bahans_stok["class"] = Route::currentRouteName();
                         $result_stok = $this->masterBahanStokRepository->create($master_bahans_stok);
